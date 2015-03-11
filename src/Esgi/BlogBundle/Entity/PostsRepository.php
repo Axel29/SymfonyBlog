@@ -13,7 +13,7 @@ use Doctrine\ORM\EntityRepository;
 class PostsRepository extends EntityRepository
 {
     /**
-     * Get post author by it's ID
+     * Get post datas by it's ID joined to User's Entity
      *
      * @return Post
      */
@@ -26,6 +26,28 @@ class PostsRepository extends EntityRepository
             JOIN p.user u
             WHERE p.id = :id'
             )->setParameter('id', $id);
+
+        try {
+            return $query->getSingleResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
+
+    /**
+     * Get post datas by it's slug joined to User's Entity
+     *
+     * @return Post
+     */
+    public function findOneBySlugJoinedToUser($postSlug)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery('
+            SELECT p, u
+            FROM EsgiBlogBundle:Posts p
+            JOIN p.user u
+            WHERE p.postSlug = :postSlug'
+            )->setParameter('postSlug', $postSlug);
 
         try {
             return $query->getSingleResult();

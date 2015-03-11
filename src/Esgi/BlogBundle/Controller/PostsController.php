@@ -90,17 +90,19 @@ class PostsController extends Controller
     /**
      * Finds and displays a Posts entity.
      *
+     * @param string $slug The post's slug
      */
-    public function showAction($id)
+    public function showAction($slug, $format)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EsgiBlogBundle:Posts')->findOneByIdJoinedToUser($id);
+        $entity = $em->getRepository('EsgiBlogBundle:Posts')->findOneBySlugJoinedToUser($slug);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Posts entity.');
         }
 
+        $id         = $entity->getId();
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('EsgiBlogBundle:Posts:show.html.twig', array(

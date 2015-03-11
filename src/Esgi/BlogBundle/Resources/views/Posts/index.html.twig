@@ -29,7 +29,7 @@
                 {% for entity in entities %}
                 <div class="post-preview">
                     <img src="http://lorempixel.com/700/250/sports/" />
-                    <a href="{{ path('esgi_blog_post_show', {'id': entity.id }) }}">
+                    <a href="{{ path('esgi_blog_post_show', {'slug': entity.postSlug }) }}">
                         <h2 class="post-title">
                             {{ entity.postTitle }}
                         </h2>

@@ -5,8 +5,10 @@ esgi_blog_post:
     defaults: { _controller: "EsgiBlogBundle:Posts:index" }
 
 esgi_blog_post_show:
-    path:     /posts/{id}
-    defaults: { _controller: "EsgiBlogBundle:Posts:show" }
+    path:     /posts/{slug}.{format}
+    defaults: { _controller: "EsgiBlogBundle:Posts:show", format: html }
+    requirements:
+        format: html
 
 esgi_blog_post_new:
     path:     /new
