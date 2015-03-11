@@ -5,7 +5,7 @@ esgi_blog_post:
     defaults: { _controller: "EsgiBlogBundle:Posts:index" }
 
 esgi_blog_post_show:
-    path:     /{id}
+    path:     /posts/{id}
     defaults: { _controller: "EsgiBlogBundle:Posts:show" }
 
 esgi_blog_post_new:
@@ -36,28 +36,28 @@ esgi_blog_comments:
     defaults: { _controller: "EsgiBlogBundle:Comments:index" }
 
 esgi_blog_comments_show:
-    path:     /show/{id}
+    path:     /comments/show/{id}
     defaults: { _controller: "EsgiBlogBundle:Comments:show" }
 
 esgi_blog_comments_new:
-    path:     /new
+    path:     /comments/new
     defaults: { _controller: "EsgiBlogBundle:Comments:new" }
 
 esgi_blog_comments_create:
-    path:     /create
+    path:     /comments/create
     defaults: { _controller: "EsgiBlogBundle:Comments:create" }
     methods:  POST
 
 esgi_blog_comments_edit:
-    path:     /{id}/edit
+    path:     /comments/{id}/edit
     defaults: { _controller: "EsgiBlogBundle:Comments:edit" }
 
 esgi_blog_comments_update:
-    path:     /update/{id}
+    path:     /comments/update/{id}
     defaults: { _controller: "EsgiBlogBundle:Comments:update" }
     methods:  [POST, PUT]
 
 esgi_blog_comments_delete:
-    path:     /delete/{id}
+    path:     /comments/delete/{id}
     defaults: { _controller: "EsgiBlogBundle:Comments:delete" }
     methods:  [POST, DELETE]
