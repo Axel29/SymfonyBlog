@@ -1,7 +1,6 @@
 <?php
-// src/Acme/UserBundle/Entity/User.php
 
-namespace Esgi\BlogBundle\Entity;
+namespace Esgi\UserBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
@@ -13,11 +12,24 @@ use Doctrine\ORM\Mapping as ORM;
 class User extends BaseUser
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     public function __construct()
     {
