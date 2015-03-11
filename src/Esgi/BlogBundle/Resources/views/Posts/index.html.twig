@@ -35,7 +35,7 @@
                         </h2>
                     </a>
                     <div class="post-content">
-                        {{ entity.postContent }}
+                        {{ entity.postContent|striptags|truncate(200, true) }}
                     </div>
                     <p class="post-meta">Posted by {{ entity.postAuthor }}, le {{ entity.postCreatedAt|date('Y-m-d H:i:s') }}</p>
                     <span class="label label-default">Publié : {{ entity.postStatus }} </span></h3>
