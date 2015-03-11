@@ -1,0 +1,17 @@
+# src/Esgi/BlogBundle/Resources/config/routing.yml
+
+esgi_blog_homepage:
+    path: /
+    defaults: { _controller: EsgiBlogBundle:Post:index }
+
+esgi_blog_add_post:
+    path: /addPost
+    defaults: { _controller: EsgiBlogBundle:Post:add }
+
+esgi_blog_edit_post:
+    path: /editPost
+    defaults: { _controller: EsgiBlogBundle:Post:edit }
+
+esgi_blog_delete_post:
+    path: /deletePost
+    defaults: { _controller: EsgiBlogBundle:Post:delete }

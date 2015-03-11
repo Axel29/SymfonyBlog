@@ -1,8 +1,3 @@
 esgi_blog:
-    resource: "@EsgiBlogBundle/Controller/"
-    type:     annotation
+    resource: "@EsgiBlogBundle/Resources/config/routing.yml"
     prefix:   /blog
-
-app:
-    resource: @AppBundle/Controller/
-    type:     annotation
