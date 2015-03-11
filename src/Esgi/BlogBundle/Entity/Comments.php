@@ -24,49 +24,49 @@ class Comments
     /**
      * @var integer
      *
-     * @ORM\Column(name="commentPostId", type="integer")
+     * @ORM\Column(name="comment_post_id", type="integer")
      */
     private $commentPostId;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="commentAuthor", type="integer")
+     * @ORM\Column(name="comment_author", type="integer")
      */
     private $commentAuthor;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="commentCreatedAt", type="datetime")
+     * @ORM\Column(name="comment_created_at", type="datetime")
      */
     private $commentCreatedAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="commentUpdatedAt", type="datetime")
+     * @ORM\Column(name="comment_updated_at", type="datetime")
      */
     private $commentUpdatedAt;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="commentTitle", type="text")
+     * @ORM\Column(name="comment_title", type="text")
      */
     private $commentTitle;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="commentContent", type="text")
+     * @ORM\Column(name="comment_content", type="text")
      */
     private $commentContent;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="commentApprouved", type="smallint")
+     * @ORM\Column(name="comment_approuved", type="smallint")
      */
     private $commentApprouved;
 

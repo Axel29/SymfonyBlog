@@ -24,14 +24,14 @@ class Categories
     /**
      * @var string
      *
-     * @ORM\Column(name="categorySlug", type="string", length=255)
+     * @ORM\Column(name="category_slug", type="string", unique=true, length=255)
      */
     private $categorySlug;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="categoryName", type="text")
+     * @ORM\Column(name="category_name", type="text")
      */
     private $categoryName;
 
