@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Posts
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Esgi\BlogBundle\Entity\PostsRepository")
  */
 class Posts
 {
@@ -24,70 +24,70 @@ class Posts
     /**
      * @var string
      *
-     * @ORM\Column(name="post_author", type="integer")
+     * @ORM\Column(name="postAuthor", type="integer")
      */
     private $postAuthor;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="post_created_at", type="datetime")
+     * @ORM\Column(name="postCreatedAt", type="datetime")
      */
     private $postCreatedAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="post_update_at", type="datetime")
+     * @ORM\Column(name="postUpdateAt", type="datetime")
      */
     private $postUpdateAt;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="post_title", type="text")
+     * @ORM\Column(name="postTitle", type="text")
      */
     private $postTitle;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="post_content", type="text")
+     * @ORM\Column(name="postContent", type="text")
      */
     private $postContent;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="post_status", type="string", length=20)
+     * @ORM\Column(name="postStatus", type="string", length=20)
      */
     private $postStatus;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="comments_allowed", type="integer")
+     * @ORM\Column(name="commentsAllowed", type="integer")
      */
     private $commentsAllowed;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="comments_count", type="integer")
+     * @ORM\Column(name="commentsCount", type="integer")
      */
     private $commentsCount;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="post_image", type="text")
+     * @ORM\Column(name="postImage", type="text")
      */
     private $postImage;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="post_slug", type="string", length=255)
+     * @ORM\Column(name="postSlug", type="string", unique=true, length=255)
      */
     private $postSlug;
 
