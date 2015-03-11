@@ -33,10 +33,10 @@
                         <h2 class="post-title">
                             {{ entity.postTitle }}
                         </h2>
-                        <h3 class="post-content">
-                            {{ entity.postContent }}
-                        </h3>
                     </a>
+                    <div class="post-content">
+                        {{ entity.postContent }}
+                    </div>
                     <p class="post-meta">Posted by {{ entity.postAuthor }}, le {{ entity.postCreatedAt|date('Y-m-d H:i:s') }}</p>
                     <span class="label label-default">Publié : {{ entity.postStatus }} </span></h3>
                 </div>
