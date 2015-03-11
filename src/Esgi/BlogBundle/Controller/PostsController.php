@@ -95,7 +95,7 @@ class PostsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EsgiBlogBundle:Posts')->find($id);
+        $entity = $em->getRepository('EsgiBlogBundle:Posts')->findOneByIdJoinedToUser($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Posts entity.');
@@ -117,7 +117,7 @@ class PostsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EsgiBlogBundle:Posts')->find($id);
+        $entity = $em->getRepository('EsgiBlogBundle:Posts')->findOneByIdJoinedToUser($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Posts entity.');
@@ -159,7 +159,7 @@ class PostsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EsgiBlogBundle:Posts')->find($id);
+        $entity = $em->getRepository('EsgiBlogBundle:Posts')->findOneByIdJoinedToUser($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Posts entity.');
@@ -192,7 +192,7 @@ class PostsController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('EsgiBlogBundle:Posts')->find($id);
+            $entity = $em->getRepository('EsgiBlogBundle:Posts')->findOneByIdJoinedToUser($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Posts entity.');

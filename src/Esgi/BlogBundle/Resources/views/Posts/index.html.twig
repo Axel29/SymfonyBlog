@@ -37,8 +37,8 @@
                     <div class="post-content">
                         {{ entity.postContent|striptags|truncate(200, true) }}
                     </div>
-                    <p class="post-meta">Posted by {{ entity.postAuthor }}, le {{ entity.postCreatedAt|date('Y-m-d H:i:s') }}</p>
-                    <span class="label label-default">Publié : {{ entity.postStatus }} </span></h3>
+                    <p class="post-meta">Posted by {{ entity.user.username }}, le {{ entity.postCreatedAt|date('Y-m-d H:i:s') }}</p>
+                    <span class="label label-default">Statut : {{ entity.postStatus }} </span></h3>
                 </div>
                 <hr>
                 {% endfor %}
