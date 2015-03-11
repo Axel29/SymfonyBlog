@@ -1,0 +1,59 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Posts list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Postauthor</th>
+                <th>Postcreatedat</th>
+                <th>Postupdateat</th>
+                <th>Posttitle</th>
+                <th>Postcontent</th>
+                <th>Poststatus</th>
+                <th>Commentsallowed</th>
+                <th>Commentscount</th>
+                <th>Postimage</th>
+                <th>Postslug</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('esgi_blog_post_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.postAuthor }}</td>
+                <td>{% if entity.postCreatedAt %}{{ entity.postCreatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.postUpdateAt %}{{ entity.postUpdateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.postTitle }}</td>
+                <td>{{ entity.postContent }}</td>
+                <td>{{ entity.postStatus }}</td>
+                <td>{{ entity.commentsAllowed }}</td>
+                <td>{{ entity.commentsCount }}</td>
+                <td>{{ entity.postImage }}</td>
+                <td>{{ entity.postSlug }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('esgi_blog_post_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('esgi_blog_post_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('esgi_blog_post_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

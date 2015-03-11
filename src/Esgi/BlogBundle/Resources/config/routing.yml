@@ -1,17 +1,32 @@
 # src/Esgi/BlogBundle/Resources/config/routing.yml
 
-esgi_blog_homepage:
-    path: /
-    defaults: { _controller: EsgiBlogBundle:Post:index }
+esgi_blog_post:
+    path:     /
+    defaults: { _controller: "EsgiBlogBundle:Posts:index" }
 
-esgi_blog_add_post:
-    path: /addPost
-    defaults: { _controller: EsgiBlogBundle:Post:add }
+esgi_blog_post_show:
+    path:     /{id}
+    defaults: { _controller: "EsgiBlogBundle:Posts:show" }
 
-esgi_blog_edit_post:
-    path: /editPost
-    defaults: { _controller: EsgiBlogBundle:Post:edit }
+esgi_blog_post_new:
+    path:     /new
+    defaults: { _controller: "EsgiBlogBundle:Posts:new" }
 
-esgi_blog_delete_post:
-    path: /deletePost
-    defaults: { _controller: EsgiBlogBundle:Post:delete }
+esgi_blog_post_create:
+    path:     /create
+    defaults: { _controller: "EsgiBlogBundle:Posts:create" }
+    methods:  POST
+
+esgi_blog_post_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "EsgiBlogBundle:Posts:edit" }
+
+esgi_blog_post_update:
+    path:     /update/{id}
+    defaults: { _controller: "EsgiBlogBundle:Posts:update" }
+    methods:  [POST, PUT]
+
+esgi_blog_post_delete:
+    path:     /delete/{id}
+    defaults: { _controller: "EsgiBlogBundle:Posts:delete" }
+    methods:  [POST, DELETE]
