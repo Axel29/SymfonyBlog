@@ -47,5 +47,13 @@ assetic:
 #swiftmailer:
 #    delivery_address: me@example.com
 
-# app/config/config_dev.yml
-bazinga_faker: ~
+#Fake Configuration
+bazinga_faker:
+    orm: doctrine
+    entities:
+        Esgi\BlogBundle\Entity\Posts:
+            number: 10
+        Esgi\BlogBundle\Entity\Comments:
+            number: 10
+        Esgi\BlogBundle\Entity\Categories:
+            number: 10

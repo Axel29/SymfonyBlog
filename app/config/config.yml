@@ -91,15 +91,4 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Esgi\BlogBundle\Entity\User
-
-#Fake Configuration
-bazinga_faker:
-    orm: doctrine
-    entities:
-            Esgi\BlogBundle\Entity\Posts:
-                number: 10
-            Esgi\BlogBundle\Entity\Comments:
-                number: 10
-            Esgi\BlogBundle\Entity\Categories:
-                number: 10
                

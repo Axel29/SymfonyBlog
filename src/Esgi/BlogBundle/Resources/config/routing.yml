@@ -30,3 +30,34 @@ esgi_blog_post_delete:
     path:     /delete/{id}
     defaults: { _controller: "EsgiBlogBundle:Posts:delete" }
     methods:  [POST, DELETE]
+
+esgi_blog_comments:
+    path:     /comments
+    defaults: { _controller: "EsgiBlogBundle:Comments:index" }
+
+esgi_blog_comments_show:
+    path:     /show/{id}
+    defaults: { _controller: "EsgiBlogBundle:Comments:show" }
+
+esgi_blog_comments_new:
+    path:     /new
+    defaults: { _controller: "EsgiBlogBundle:Comments:new" }
+
+esgi_blog_comments_create:
+    path:     /create
+    defaults: { _controller: "EsgiBlogBundle:Comments:create" }
+    methods:  POST
+
+esgi_blog_comments_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EsgiBlogBundle:Comments:edit" }
+
+esgi_blog_comments_update:
+    path:     /update/{id}
+    defaults: { _controller: "EsgiBlogBundle:Comments:update" }
+    methods:  [POST, PUT]
+
+esgi_blog_comments_delete:
+    path:     /delete/{id}
+    defaults: { _controller: "EsgiBlogBundle:Comments:delete" }
+    methods:  [POST, DELETE]
