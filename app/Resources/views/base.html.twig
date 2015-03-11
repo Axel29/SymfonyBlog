@@ -9,7 +9,19 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+
+            {% block menu %}
+            {% endblock menu %}
+
+            {% block content %}
+            {% endblock content %}
+
+            {% block footer %}
+            {% endblock footer %}
+
+        {% endblock %}
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>
