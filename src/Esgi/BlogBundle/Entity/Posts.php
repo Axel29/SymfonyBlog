@@ -147,7 +147,7 @@ class Posts
     {
         return $this->postCreatedAt;
     }
-php app/console doctrine:generate:entity --entity="EsgiBlogBundle:Categories" --fields="categorySlug:string(255) categoryName:text"
+
     /**
      * Set postUpdateAt
      *
