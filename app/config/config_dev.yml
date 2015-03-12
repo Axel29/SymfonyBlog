@@ -74,8 +74,6 @@ bazinga_faker:
             number: 10
             custom_formatters:
                 commentApprouved: { method: numberBetween, parameters: [ 0, 1 ] }
-                commentPostId: { method: randomDigit }
-                commentAuthor: { method: randomDigit }
                 created: { method: dateTimeThisMonth }
                 updated: { method: dateTimeThisMonth }
         Esgi\BlogBundle\Entity\Categories:
