@@ -2,12 +2,13 @@
 
 namespace Esgi\UserBundle\Controller;
 
+use Esgi\UserBundle\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
-class LoginController extends Controller
+class UserController extends Controller
 {
     public function indexAction(Request $request)
     {
@@ -73,5 +74,33 @@ class LoginController extends Controller
     public function logoutAction()
     {
         throw new \RuntimeException('You must activate the logout in your security firewall configuration.');
+    }
+
+
+    public function registerAction()
+    {
+        $userManager = $this->get('fos_user.user_manager');
+        $user = $userManager->createUser();
+        $form = $this->createForm(new RegistrationFormType(), $user);
+
+        $request = $this->get('request');
+
+        if ($request->getMethod() == 'POST') {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+
+                // On active directement l'utilisateur sans qu'il n'ait besoin d'activer son compte
+                $user->setEnabled(true);
+
+                $userManager->updateUser($user);
+            }
+            return $this->redirect($this->generateUrl('user_registerpage'));
+
+        }
+
+        /* Ajouter le menu à la méthode render */
+        return $this->render('@EsgiUser/Register/index.html.twig', array(
+            'form' => $form->createView()
+        ));
     }
 }
