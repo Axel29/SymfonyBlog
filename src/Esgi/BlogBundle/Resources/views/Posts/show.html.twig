@@ -1,6 +1,6 @@
 {% extends '@EsgiBlog/layout.html.twig' %}
 {% block title %}
- {{ entity.postTitle }}
+    {{ entity.postTitle }}
 {% endblock %}
 
 {% block menu %}
@@ -23,66 +23,66 @@
 {% endblock header %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="span8">
-            <div class="row">
-                <div class="span6">
-                    <p>
-                        {{ entity.postContent }}
-                    </p>
+    <div class="container">
+        <div class="row">
+            <div class="span8">
+                <div class="row">
+                    <div class="span6">
+                        <p>
+                            {{ entity.postContent }}
+                        </p>
 
-                </div>
-            </div>
-            <div class="row">
-                <div class="span8">
-                    <p>
-                        <i class="icon-user"></i> by <a href="#">{{ entity.user.username }}</a>
-                        | <i class="icon-calendar"></i> {{ entity.created|date('d-m-Y \\à H:i:s') }}
-                        | <i class="icon-comment"></i> <a href="#">{{ entity.commentsCount }} Comments</a>
-                        | <i class="icon-tags"></i> Statut : <a href="#"><span class="label label-info">{{ entity.postStatus }}</span></a>
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="span8">
-                    <a href="{{ path('esgi_blog_post') }}" class="btn btn-primary">Retour à la liste</a>
-                    <!--<a href="{{ path('esgi_blog_post_edit', {'id' : entity.id }) }}" class="btn btn-warning">Modifier l'article</a>-->
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="pull-left col-md-8">
-                    <h3>Comments</h3>
-                    {% for comment in postComments %}
-                    <div class="media">
-                        <div class="media-left">
-                            <a href="#">
-                                <img class="media-object" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGRlZnMvPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEyLjQ1ODMzMzk2OTExNjIxMSIgeT0iMzIiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTBwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj42NHg2NDwvdGV4dD48L2c+PC9zdmc+" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">{{ comment.commentTitle }}</h4>
-                            <p>{{ comment.commentContent }}</p>
-                            <p>Publié le : <span class="label label-primary">{{ comment.created|date('d-m-Y \\à H:i:s') }}</span></p>
-                        </div>
                     </div>
-                    {% endfor %}
                 </div>
-                <div class="pull-right col-md-4">
-                    <h3>Submit a comment</h3>
-                    {{ form_start(create_comment_form) }}
+                <div class="row">
+                    <div class="span8">
+                        <p>
+                            <i class="icon-user"></i> by <a href="#">{{ entity.user.username }}</a>
+                            | <i class="icon-calendar"></i> {{ entity.created|date('d-m-Y \\à H:i:s') }}
+                            | <i class="icon-comment"></i> <a href="#">{{ entity.commentsCount }} Comments</a>
+                            | <i class="icon-tags"></i> Statut : <a href="#"><span class="label label-info">{{ entity.postStatus }}</span></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span8">
+                        <a href="{{ path('esgi_blog_post') }}" class="btn btn-primary">Retour à la liste</a>
+                        <!--<a href="{{ path('esgi_blog_post_edit', {'id' : entity.id }) }}" class="btn btn-warning">Modifier l'article</a>-->
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="pull-left col-md-8">
+                        <h3>Comments</h3>
+                        {% for comment in postComments %}
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGRlZnMvPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEyLjQ1ODMzMzk2OTExNjIxMSIgeT0iMzIiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTBwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj42NHg2NDwvdGV4dD48L2c+PC9zdmc+" alt="...">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">{{ comment.commentTitle }}</h4>
+                                    <p>{{ comment.commentContent }}</p>
+                                    <p>Publié le : <span class="label label-primary">{{ comment.created|date('d-m-Y \\à H:i:s') }}</span></p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="pull-right col-md-4">
+                        <h3>Submit a comment</h3>
+                        {{ form_start(create_comment_form) }}
                         {{ form_errors(create_comment_form) }}
 
                         {{ form_row(create_comment_form.commentTitle) }}
                         {{ form_row(create_comment_form.commentContent) }}
                         {{ form_row(create_comment_form.submit) }}
 
-                    {{ form_end(create_comment_form, {'render_rest': false}) }}
+                        {{ form_end(create_comment_form, {'render_rest': false}) }}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <hr>
 
