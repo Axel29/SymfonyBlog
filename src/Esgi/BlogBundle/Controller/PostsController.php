@@ -57,102 +57,13 @@ class PostsController extends Controller
     }
 
     /**
-     * Creates a new Posts entity.
-     *
-     */
-    public function createAction(Request $request)
-    {
-        $entity = new Posts();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('esgi_blog_post_show', array('id' => $entity->getId())));
-        }
-
-        return $this->render('EsgiBlogBundle:Posts:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
-    }
-
-
-
-    /**
-     * Creates a form to create a Posts entity.
-     *
-     * @param Posts $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createCreateForm(Posts $entity)
-    {
-        $form = $this->createForm(new PostsType(), $entity, array(
-            'action' => $this->generateUrl('esgi_blog_post_create'),
-            'method' => 'POST',
-        ));
-
-        $form->add('submit', 'submit', array('label' => 'Create'));
-
-        return $form;
-    }
-
-    /**
-     * Creates a form to create a Comments entity.
-     *
-     * @param Comments $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createCommentForm(Comments $entity, Request $request)
-    {
-        $form = $this->createForm(new CommentsType(), $entity, array(
-            'action' => $this->generateUrl('esgi_blog_comments_create'),
-            'method' => 'POST',
-        ));
-
-        $form->add(
-            'Add Comment',
-            'submit',
-            array(
-                'attr'  => array('class' => 'btn btn-primary pull-right')),
-            array(
-                'label' => 'Add Comment'
-            )
-        );
-        return $form;
-    }
-
-
-
-    /**
-     * Displays a form to create a new Posts entity.
-     *
-     */
-    public function newAction()
-    {
-        $entity = new Posts();
-        $form   = $this->createCreateForm($entity);
-
-        return $this->render('EsgiBlogBundle:Posts:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
-    }
-
-    /**
      * Finds and displays a Posts entity.
      *
      * @param string $slug The post's slug
      */
     public function showAction($slug, $format, Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-
+        $em     = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('EsgiBlogBundle:Posts')->findOneBySlugJoinedToUser($slug);
 
         if (!$entity) {
@@ -166,128 +77,41 @@ class PostsController extends Controller
             $postComments = array();
         }
 
-        $comments = new Comments();
+        $comments         = new Comments();
         $newCommentForm   = $this->createCommentForm($comments, $request);
 
 
         return $this->render('EsgiBlogBundle:Posts:show.html.twig', array(
-            'entity'      => $entity,
-            'comments'    => $comments,
-            'postComments' => $postComments,
+            'entity'              => $entity,
+            'comments'            => $comments,
+            'postComments'        => $postComments,
             'create_comment_form' => $newCommentForm->createView(),
         ));
     }
 
     /**
-     * Displays a form to edit an existing Posts entity.
+     * Creates a form to create a Comments entity.
      *
-     */
-    public function editAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('EsgiBlogBundle:Posts')->findOneByIdJoinedToUser($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('The post doesn\'t exists.');
-        }
-
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('EsgiBlogBundle:Posts:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
-    * Creates a form to edit a Posts entity.
-    *
-    * @param Posts $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Posts $entity)
-    {
-        $form = $this->createForm(new PostsType(), $entity, array(
-            'action' => $this->generateUrl('esgi_blog_post_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
-
-        $form->add('submit', 'submit', array('label' => 'Update'));
-
-        return $form;
-    }
-    /**
-     * Edits an existing Posts entity.
-     *
-     */
-    public function updateAction(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('EsgiBlogBundle:Posts')->findOneByIdJoinedToUser($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('The post doesn\'t exists.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isValid()) {
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('esgi_blog_post_edit', array('id' => $id)));
-        }
-
-        return $this->render('EsgiBlogBundle:Posts:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-    /**
-     * Deletes a Posts entity.
-     *
-     */
-    public function deleteAction(Request $request, $id)
-    {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('EsgiBlogBundle:Posts')->findOneByIdJoinedToUser($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('The post doesn\'t exists.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
-        }
-
-        return $this->redirect($this->generateUrl('esgi_blog_post'));
-    }
-
-    /**
-     * Creates a form to delete a Posts entity by id.
-     *
-     * @param mixed $id The entity id
+     * @param Comments $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
+    private function createCommentForm(Comments $entity, Request $request)
     {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('esgi_blog_post_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Supprimer','attr' => array('class'=>'btn btn-danger')))
-            ->getForm()
-        ;
+        $form = $this->createForm(new CommentsType(), $entity, array(
+            'action' => $this->generateUrl('esgi_blog_posts_create_comment'),
+            'method' => 'POST',
+        ));
+
+        $form->add(
+            'Add Comment',
+            'submit',
+            array(
+                'attr'  => array('class' => 'btn btn-primary pull-right')),
+            array(
+                'label' => 'Add Comment'
+            )
+        );
+        return $form;
     }
 }

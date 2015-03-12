@@ -39,49 +39,7 @@ esgi_blog_post_update:
                  _method: PUT|POST
                  id: \d+
 
-
-esgi_blog_post_delete:
-    path:     /delete/{id}
-    defaults: { _controller: "EsgiBlogBundle:Posts:delete" }
-    requirements:
-                 _method: DELETE|POST
-                 id: \d+
-
-esgi_blog_comments:
-    path:     /comments
-    defaults: { _controller: "EsgiBlogBundle:Comments:index" }
-
-esgi_blog_comments_show:
-    path:     /comments/show/{id}
-    defaults: { _controller: "EsgiBlogBundle:Comments:show" }
-    requirements:
-                 id: \d+
-
-esgi_blog_comments_new:
-    path:     /comments/new
-    defaults: { _controller: "EsgiBlogBundle:Comments:new" }
-
-esgi_blog_comments_create:
-    path:     /comments/create
-    defaults: { _controller: "EsgiBlogBundle:Comments:create" }
+esgi_blog_posts_create_comment:
+    path:     /posts/createComment
+    defaults: { _controller: "EsgiBlogBundle:Posts:createComment" }
     methods:  POST
-
-esgi_blog_comments_edit:
-    path:     /comments/{id}/edit
-    defaults: { _controller: "EsgiBlogBundle:Comments:edit" }
-    requirements:
-                 id: \d+
-
-esgi_blog_comments_update:
-    path:     /comments/update/{id}
-    defaults: { _controller: "EsgiBlogBundle:Comments:update" }
-    requirements:
-                 _method: PUT|POST
-                 id: \d+
-
-esgi_blog_comments_delete:
-    path:     /comments/delete/{id}
-    defaults: { _controller: "EsgiBlogBundle:Comments:delete" }
-    requirements:
-                 _method: DELETE|POST
-                 id: \d+
