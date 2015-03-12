@@ -70,4 +70,25 @@ class PostsRepository extends EntityRepository
 
         return $query;
     }
+
+    /**
+     * Find comments by post id
+     *
+     * @param $id
+     * @return array|\Doctrine\ORM\QueryBuilder
+     */
+    public function findByPost($id)
+    {
+        $query = $this->createQueryBuilder('c')
+            ->select('c')
+            ->leftJoin('c.post', 'p')
+            ->addSelect('p');
+
+        $query = $query->add('where', $query->expr()->in('p', ':p'))
+            ->setParameter('p', $id)
+            ->getQuery()
+            ->getResult();
+
+        return $query;
+    }
 }
