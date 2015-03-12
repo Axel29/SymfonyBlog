@@ -106,29 +106,7 @@ class Posts
         return $this->id;
     }
 
-    /**
-     * Set user
-     *
-     * @param string $user
-     * @return User
-     */
-    public function setUser(User $user)
-    {
-        $this->user = $user;
 
-        return $this;
-    }
-
-
-    /**
-     * Get user
-     *
-     * @return User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
 
     /**
      * Set postCreatedAt
@@ -375,5 +353,28 @@ class Posts
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Esgi\UserBundle\Entity\User $user
+     * @return Posts
+     */
+    public function setUser(\Esgi\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Esgi\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
