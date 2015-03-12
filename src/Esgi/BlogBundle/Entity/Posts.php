@@ -238,7 +238,7 @@ class Posts
     /**
      * Get postStatus
      *
-     * @return string 
+     * @return string
      */
     public function getPostStatus()
     {

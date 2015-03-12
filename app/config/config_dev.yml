@@ -63,7 +63,7 @@ bazinga_faker:
         Esgi\BlogBundle\Entity\Posts:
             number: 10
             custom_formatters:
-                postStatus: { method: randomElement, parameters: [ ['Publié', 'En attente de validation', 'Supprimé' ] ]}
+                postStatus: { method: numberBetween, parameters: [ 1, 3 ]}
                 postSlug: { method: slug }
                 postCreatedAt: { method: dateTimeThisMonth }
                 postUpdatedAt: { method: dateTimeThisMonth }

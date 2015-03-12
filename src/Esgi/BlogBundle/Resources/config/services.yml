@@ -1,0 +1,4 @@
+# src/Esgi/BlogBundle/Resources/config/services.yml
+services:
+    esgi_blogbundle_helper.data:
+        class: Esgi\BlogBundle\Helper\Data
