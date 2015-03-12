@@ -86,7 +86,11 @@ sonata_admin:
         # other configuration options
         search:              SonataAdminBundle:Core:search.html.twig
         search_result_block: SonataAdminBundle:Block:block_search_result.html.twig
-        show:                SonataAdminBundle:CRUD:show.html.twig
+
+    dashboard:
+        blocks:
+        # display a dashboard block
+        - { position: right, type: sonata.admin.block.admin_list }
 
 sonata_block:
     default_contexts: [cms]

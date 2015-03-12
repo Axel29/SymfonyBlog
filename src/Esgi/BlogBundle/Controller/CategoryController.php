@@ -17,7 +17,7 @@ class CategoryController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EsgiBlogBundle:Categories')->getPostsByCategorySlug($slug);
+        $entity = $em->getRepository('EsgiBlogBundle:Categories')->findAllByCategorySlug($slug);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Posts entity.');
