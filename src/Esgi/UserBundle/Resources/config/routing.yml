@@ -1,9 +1,13 @@
 user_loginpage:
     path:     /login
-    defaults: { _controller: "EsgiUserBundle:Login:index" }
+    defaults: { _controller: "EsgiUserBundle:User:index" }
 
 user_login_check:
     pattern:   /login_check
-    defaults: { _controller: "EsgiUserBundle:Login:check" }
+    defaults: { _controller: "EsgiUserBundle:User:check" }
     requirements:
                 _method: POST
+
+user_registerpage:
+    path:     /register
+    defaults: { _controller: "EsgiUserBundle:User:register" }
