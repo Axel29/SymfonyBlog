@@ -1,5 +1,11 @@
 # src/Esgi/BlogBundle/Resources/config/routing.yml
 
+esgi_blog_category_show:
+    path:     /category/{slug}.{format}
+    defaults: { _controller: "EsgiBlogBundle:Category:show", format: html }
+    requirements:
+        format: html
+
 esgi_blog_post:
     path:     /
     defaults: { _controller: "EsgiBlogBundle:Posts:index" }

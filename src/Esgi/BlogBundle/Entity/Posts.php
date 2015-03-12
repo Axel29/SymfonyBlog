@@ -90,6 +90,11 @@ class Posts
      */
     private $postSlug;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Esgi\BlogBundle\Entity\Categories", inversedBy="posts", cascade={"persist", "merge"})
+     */
+    private $category;
+
 
     /**
      * Get id
@@ -330,5 +335,45 @@ class Posts
     public function getPostSlug()
     {
         return $this->postSlug;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->category = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add category
+     *
+     * @param \Esgi\BlogBundle\Entity\Categories $category
+     * @return Posts
+     */
+    public function addCategory(\Esgi\BlogBundle\Entity\Categories $category)
+    {
+        $this->category[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @param \Esgi\BlogBundle\Entity\Categories $category
+     */
+    public function removeCategory(\Esgi\BlogBundle\Entity\Categories $category)
+    {
+        $this->category->removeElement($category);
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }
