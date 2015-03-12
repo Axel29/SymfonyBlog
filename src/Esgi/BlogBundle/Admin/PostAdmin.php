@@ -20,7 +20,7 @@ class PostAdmin extends Admin
 
         $formMapper
             ->with('User')
-            ->add('user', 'sonata_type_model')
+            ->add('user')
             ->add('post_title', 'text', array('label' => 'Post Title'))
             ->add('post_content', 'text', array('label' => 'Post Content'))
             ->add('post_status', 'choice', array(
@@ -31,6 +31,7 @@ class PostAdmin extends Admin
                     'choices' => $postCommentsAllowedValues
                 )
             )
+            ->add('comments_count', 'hidden', array('data' => '0'))
             ->add('post_image', 'text', array('label' => 'Post Image'))
             ->add('post_slug', 'text', array('label' => 'Post Slug'))
         ;

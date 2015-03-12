@@ -65,8 +65,8 @@ bazinga_faker:
             custom_formatters:
                 postStatus: { method: numberBetween, parameters: [ 1, 3 ]}
                 postSlug: { method: slug }
-                postCreatedAt: { method: dateTimeThisMonth }
-                postUpdatedAt: { method: dateTimeThisMonth }
+                created: { method: dateTimeThisMonth }
+                updated: { method: dateTimeThisMonth }
                 commentsAllowed: { method: numberBetween, parameters: [ 0, 1 ] }
                 commentsCount: { method: randomDigit }
                 postImage: { method: image, parameters: [ 'src/Esgi/BlogBundle/Resources/public/img', '700', '250' ] }
@@ -76,8 +76,8 @@ bazinga_faker:
                 commentApprouved: { method: numberBetween, parameters: [ 0, 1 ] }
                 commentPostId: { method: randomDigit }
                 commentAuthor: { method: randomDigit }
-                commentCreatedAt: { method: dateTimeThisMonth }
-                commentUpdatedAt: { method: dateTimeThisMonth }
+                created: { method: dateTimeThisMonth }
+                updated: { method: dateTimeThisMonth }
         Esgi\BlogBundle\Entity\Categories:
             number: 10
             custom_formatters:

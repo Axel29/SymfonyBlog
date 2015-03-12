@@ -3,6 +3,7 @@
 namespace Esgi\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Comments
@@ -36,18 +37,16 @@ class Comments
     private $commentAuthor;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="comment_created_at", type="datetime")
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(name="created", type="datetime")
      */
-    private $commentCreatedAt;
+    private $created;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="comment_updated_at", type="datetime")
+     * @ORM\Column(name="updated", type="datetime")
+     * @Gedmo\Timestampable(on="update")
      */
-    private $commentUpdatedAt;
+    private $updated;
 
     /**
      * @var string
@@ -125,52 +124,6 @@ class Comments
     public function getCommentAuthor()
     {
         return $this->commentAuthor;
-    }
-
-    /**
-     * Set commentCreatedAt
-     *
-     * @param \DateTime $commentCreatedAt
-     * @return Comments
-     */
-    public function setCommentCreatedAt($commentCreatedAt)
-    {
-        $this->commentCreatedAt = $commentCreatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get commentCreatedAt
-     *
-     * @return \DateTime 
-     */
-    public function getCommentCreatedAt()
-    {
-        return $this->commentCreatedAt;
-    }
-
-    /**
-     * Set commentUpdatedAt
-     *
-     * @param \DateTime $commentUpdatedAt
-     * @return Comments
-     */
-    public function setCommentUpdatedAt($commentUpdatedAt)
-    {
-        $this->commentUpdatedAt = $commentUpdatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get commentUpdatedAt
-     *
-     * @return \DateTime 
-     */
-    public function getCommentUpdatedAt()
-    {
-        return $this->commentUpdatedAt;
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace Esgi\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Posts
@@ -28,18 +29,17 @@ class Posts
     private $id;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="post_created_at", type="datetime")
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(name="created", type="datetime")
      */
-    private $postCreatedAt;
+    private $created;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="post_update_at", type="datetime")
+     * @ORM\Column(name="updated", type="datetime")
+     * @Gedmo\Timestampable(on="update")
      */
-    private $postUpdatedAt;
+    private $updated;
+
 
     /**
      * @var string
@@ -65,21 +65,21 @@ class Posts
     /**
      * @var integer
      *
-     * @ORM\Column(name="comments_allowed", type="integer")
+     * @ORM\Column(name="comments_allowed", type="integer", options={"default":0}, nullable=true)
      */
     private $commentsAllowed;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="comments_count", type="integer")
+     * @ORM\Column(name="comments_count", type="integer", options={"default":0}, nullable=true)
      */
     private $commentsCount;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="post_image", type="string", length=255)
+     * @ORM\Column(name="post_image", type="string", length=255, nullable=true)
      */
     private $postImage;
 
@@ -104,54 +104,6 @@ class Posts
     public function getId()
     {
         return $this->id;
-    }
-
-
-
-    /**
-     * Set postCreatedAt
-     *
-     * @param \DateTime $postCreatedAt
-     * @return Posts
-     */
-    public function setPostCreatedAt($postCreatedAt)
-    {
-        $this->postCreatedAt = $postCreatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get postCreatedAt
-     *
-     * @return \DateTime 
-     */
-    public function getPostCreatedAt()
-    {
-        return $this->postCreatedAt;
-    }
-
-    /**
-     * Set postUpdatedAt
-     *
-     * @param \DateTime $postUpdatedAt
-     * @return Posts
-     */
-    public function setPostUpdatedAt($postUpdatedAt)
-    {
-        $this->postUpdatedAt = $postUpdatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get postUpdatedAt
-     *
-     * @return \DateTime 
-     */
-    public function getPostUpdatedAt()
-    {
-        return $this->postUpdatedAt;
     }
 
     /**
