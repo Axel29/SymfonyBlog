@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: @EsgiBlogBundle/Resources/config/admin.yml }
 
 framework:
     #esi:             ~
@@ -78,6 +79,9 @@ stof_doctrine_extensions:
         default:
             timestampable: true
             sluggable: true
+
+sonata_admin:
+    title:      Symfony Blog
 
 sonata_block:
     default_contexts: [cms]
