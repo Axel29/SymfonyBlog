@@ -31,6 +31,7 @@ class CategoryController extends Controller
         }
         return $this->render('EsgiBlogBundle:Categories:show.html.twig', array(
             'categoryPosts'      => $categoryPosts,
+            'categoryName'       => $category->getCategoryName(),
         ));
     }
 }
