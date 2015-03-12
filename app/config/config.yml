@@ -86,6 +86,7 @@ sonata_admin:
         # other configuration options
         search:              SonataAdminBundle:Core:search.html.twig
         search_result_block: SonataAdminBundle:Block:block_search_result.html.twig
+        show: EsgiBlogBundle:Posts:show.html.twig
 
 sonata_block:
     default_contexts: [cms]
