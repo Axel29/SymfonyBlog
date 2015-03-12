@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 class PostAdmin extends Admin
 {
@@ -58,5 +59,17 @@ class PostAdmin extends Admin
                     'delete' => array(),
                 )
             ));
+    }
+    protected function configureShowFields(ShowMapper $showMapper)
+    {
+        $showMapper
+            ->add('postTitle')
+            ->add('postStatus')
+            ->add('postContent')
+            ->add('post_status')
+            ->add('comments_allowed')
+            ->add('post_image')
+            ->add('post_slug')
+        ;
     }
 }
