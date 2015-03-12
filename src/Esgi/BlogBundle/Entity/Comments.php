@@ -69,6 +69,11 @@ class Comments
      */
     private $commentApprouved;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Esgi\BlogBundle\Entity\Posts", inversedBy="comments", cascade={"persist", "merge"})
+     */
+    private $post;
+
 
     /**
      * Get id
@@ -193,5 +198,91 @@ class Comments
     public function getCommentApprouved()
     {
         return $this->commentApprouved;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->post = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Comments
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Comments
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * Add post
+     *
+     * @param \Esgi\BlogBundle\Entity\Posts $post
+     * @return Comments
+     */
+    public function addPost(\Esgi\BlogBundle\Entity\Posts $post)
+    {
+        $this->post[] = $post;
+
+        return $this;
+    }
+
+    /**
+     * Remove post
+     *
+     * @param \Esgi\BlogBundle\Entity\Posts $post
+     */
+    public function removePost(\Esgi\BlogBundle\Entity\Posts $post)
+    {
+        $this->post->removeElement($post);
+    }
+
+    /**
+     * Get post
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPost()
+    {
+        return $this->post;
     }
 }
