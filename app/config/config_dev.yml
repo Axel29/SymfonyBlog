@@ -69,6 +69,7 @@ bazinga_faker:
                 postUpdatedAt: { method: dateTimeThisMonth }
                 commentsAllowed: { method: numberBetween, parameters: [ 0, 1 ] }
                 commentsCount: { method: randomDigit }
+                postImage: { method: image, parameters: [ 'src/Esgi/BlogBundle/Resources/public/img', '700', '250' ] }
         Esgi\BlogBundle\Entity\Comments:
             number: 10
             custom_formatters:
@@ -81,3 +82,4 @@ bazinga_faker:
             number: 10
             custom_formatters:
                 categorySlug: { method: slug }
+                categoryIncludeInMenu: { method: numberBetween, parameters: [ 0, 1 ]}
