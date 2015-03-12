@@ -25,8 +25,11 @@ class CommentsRepository extends EntityRepository
             ->leftJoin('c.post', 'p')
             ->addSelect('p');
 
-        $query = $query->add('where', $query->expr()->in('p', ':p'))
+        $query = $query
+            ->add('where', $query->expr()->in('p', ':p'))
+            ->andWhere('c.commentApprouved = :commentApprouved')
             ->setParameter('p', $id)
+            ->setParameter('commentApprouved', '1')
             ->getQuery()
             ->getResult();
 
