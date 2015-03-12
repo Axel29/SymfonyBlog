@@ -1,0 +1,4 @@
+api_posts:
+    type: rest
+    resource: "@EsgiBlogBundle/Controller/PostRestController.php"
+    name_prefix: api_
