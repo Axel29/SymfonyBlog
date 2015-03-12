@@ -11,17 +11,25 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            {% for categoryPost in categoryPosts %}
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                {{ categoryPost.postTitle }}
-            {% endfor %}
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {% for categoryPost in categoryPosts %}
+                    <div class="post-preview">
+                        <img src="http://lorempixel.com/700/250/sports/" />
+                        <a href="/SymfonyBlog/web/app_dev.php/blog/posts/{{ categoryPost.postSlug }}">
+                            <h2 class="post-title">
+                                {{ categoryPost.postTitle }}
+                            </h2>
+                        </a>
+                        <div class="post-content">
+                            {{ categoryPost.postContent }}
+                        </div>
+                        <p class="post-meta">Posté par {{ categoryPost.user.username }}, le {{ categoryPost.created|date('d/m/Y à H:i') }}</p>
+                        <span class="label label-default">Statut : {{ categoryPost.postStatus }} </span></h3>
+                    </div>
+                    <hr>
+                    {{ categoryPost.postTitle }}
+                {% endfor %}
+            </div>
         </div>
     </div>
     <hr>

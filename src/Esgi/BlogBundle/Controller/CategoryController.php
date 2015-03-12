@@ -29,7 +29,6 @@ class CategoryController extends Controller
         if (!$categoryPosts) {
             $categoryPosts = array();
         }
-
         return $this->render('EsgiBlogBundle:Categories:show.html.twig', array(
             'categoryPosts'      => $categoryPosts,
         ));
