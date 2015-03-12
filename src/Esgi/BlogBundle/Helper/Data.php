@@ -12,9 +12,9 @@ class Data
     public function getPostStatuses()
     {
         $statuses = array(
-            '1' => 'Published',
-            '2' => 'Pending for validation',
-            '3' => 'Deleted',
+            'Publié' => 'Published',
+            'En attente de validation' => 'Pending for validation',
+            'Supprimé' => 'Deleted',
         );
         return $statuses;
     }
