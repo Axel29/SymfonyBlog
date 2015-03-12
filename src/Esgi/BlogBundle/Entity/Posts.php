@@ -58,7 +58,7 @@ class Posts
     /**
      * @var string
      *
-     * @ORM\Column(name="post_status", type="integer")
+     * @ORM\Column(name="post_status", type="string", length=255)
      */
     private $postStatus;
 
@@ -233,7 +233,7 @@ class Posts
     /**
      * Get postStatus
      *
-     * @return integer
+     * @return string
      */
     public function getPostStatus()
     {
