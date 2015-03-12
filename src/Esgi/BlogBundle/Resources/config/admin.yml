@@ -13,3 +13,17 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [EsgiBlogBundle]]
+
+    sonata.admin.user:
+            class: Esgi\BlogBundle\Admin\UserAdmin
+            tags:
+                -  name: sonata.admin
+                   manager_type: orm
+                   group: "Users"
+                   label: "Actions"
+            arguments:
+                - ~
+                - Esgi\UserBundle\Entity\User
+                - ~
+            calls:
+                - [ setTranslationDomain, [EsgiBlogBundle]]

@@ -12,9 +12,9 @@ class Data
     public function getPostStatuses()
     {
         $statuses = array(
-            'Publié' => 'Published',
+            'Publié'                   => 'Published',
             'En attente de validation' => 'Pending for validation',
-            'Supprimé' => 'Deleted',
+            'Supprimé'                 => 'Deleted',
         );
         return $statuses;
     }
@@ -25,6 +25,21 @@ class Data
      * @return array $values Values for comments allowed's field
      */
     public function getPostCommentsAllowedValues()
+    {
+        $values = array(
+            '0' => 'Authorized',
+            '1' => 'Refused',
+        );
+
+        return $values;
+    }
+
+    /**
+     * Get user roles as array
+     *
+     * @return array $roles User Roles
+     */
+    public function getUserRoles()
     {
         $values = array(
             '0' => 'Authorized',

@@ -13,11 +13,13 @@ class PostAdmin extends Admin
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $container   = $this->getConfigurationPool()->getContainer();
-        $postStatuses = $container->get('esgi_blogbundle_helper.data')->getPostStatuses();
+        $container                 = $this->getConfigurationPool()->getContainer();
+        $postStatuses              = $container->get('esgi_blogbundle_helper.data')->getPostStatuses();
         $postCommentsAllowedValues = $container->get('esgi_blogbundle_helper.data')->getPostCommentsAllowedValues();
 
         $formMapper
+            ->with('User')
+            ->add('user', 'sonata_type_model')
             ->add('post_title', 'text', array('label' => 'Post Title'))
             ->add('post_content', 'text', array('label' => 'Post Content'))
             ->add('post_status', 'choice', array(
