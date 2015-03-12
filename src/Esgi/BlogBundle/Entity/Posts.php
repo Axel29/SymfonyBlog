@@ -58,7 +58,7 @@ class Posts
     /**
      * @var string
      *
-     * @ORM\Column(name="post_status", type="string", length=20)
+     * @ORM\Column(name="post_status", type="string", length=255)
      */
     private $postStatus;
 

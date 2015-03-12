@@ -35,6 +35,13 @@ class Categories
      */
     private $categoryName;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="category_include_in_menu", type="integer", options={"default":0})
+     */
+    private $categoryIncludeInMenu;
+
 
     /**
      * Get id
@@ -90,5 +97,25 @@ class Categories
     public function getCategoryName()
     {
         return $this->categoryName;
+    }
+
+    /**
+     * Get categoryIncludeInMenu
+     *
+     * @return string
+     */
+    public function getCategoryIncludeInMenu()
+    {
+        return $this->categoryIncludeInMenu;
+    }
+
+    /**
+     * Set categoryIncludeInMenu
+     *
+     * @param string $categoryIncludeInMenu
+     */
+    public function setCategoryIncludeInMenu($categoryIncludeInMenu)
+    {
+        $this->categoryIncludeInMenu = $categoryIncludeInMenu;
     }
 }
