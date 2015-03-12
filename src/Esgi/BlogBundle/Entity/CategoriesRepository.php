@@ -39,20 +39,25 @@ class CategoryRepository extends EntityRepository
      *
      * @return Category
      */
-    public function getPostsByCategoryId($categoryId)
-    {
-        $query = $this->getEntityManager()
-            ->createQuery('
-            SELECT p, c
-            FROM EsgiBlogBundle:Categories c
-            JOIN p.post_id p
-            WHERE p.post_id = :categoryId'
-            )->setParameter('categoryId', $categoryId);
+    public function findAllWithCount(){
+        return $this->getEntityManager()->getRepository('EsgiBlogBundle:Posts')->createQueryBuilder('p')
+            ->select('p, c, COUNT(p) AS postCount')
+            ->join('p.category', 'c')
+            ->groupBy('c.id')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
-        try {
-            return $query->getSingleResult();
-        } catch (\Doctrine\ORM\NoResultException $e) {
-            return null;
-        }
+    public function findAllByCategorySlug($categorySlug) {
+        $produits = $this->get('Doctrine')
+            ->getManager()
+            ->getRepository('EsgiBlogBundle:Posts')
+            ->findByCategorySlug($categorySlug);
+
+        return $this->render('EsgiBlogBundle:category.html.twig',
+            array('posts' =>     $posts,
+                'category' =>    $category )
+        );
     }
 }
