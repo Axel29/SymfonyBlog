@@ -22,6 +22,11 @@ class Categories
     private $id;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Esgi\BlogBundle\Entity\Posts", mappedBy="category")
+     **/
+    private $posts;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="category_slug", type="string", unique=true, length=255)
@@ -117,5 +122,45 @@ class Categories
     public function setCategoryIncludeInMenu($categoryIncludeInMenu)
     {
         $this->categoryIncludeInMenu = $categoryIncludeInMenu;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add posts
+     *
+     * @param \Esgi\BlogBundle\Entity\Posts $posts
+     * @return Categories
+     */
+    public function addPost(\Esgi\BlogBundle\Entity\Posts $posts)
+    {
+        $this->posts[] = $posts;
+
+        return $this;
+    }
+
+    /**
+     * Remove posts
+     *
+     * @param \Esgi\BlogBundle\Entity\Posts $posts
+     */
+    public function removePost(\Esgi\BlogBundle\Entity\Posts $posts)
+    {
+        $this->posts->removeElement($posts);
+    }
+
+    /**
+     * Get posts
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPosts()
+    {
+        return $this->posts;
     }
 }

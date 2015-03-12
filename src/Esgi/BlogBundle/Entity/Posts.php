@@ -14,12 +14,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class Posts
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Esgi\UserBundle\Entity\User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
-     */
-    private $user;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -91,9 +85,21 @@ class Posts
     private $postSlug;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Esgi\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     */
+    private $user;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Esgi\BlogBundle\Entity\Categories", inversedBy="posts", cascade={"persist", "merge"})
+     * @ORM\JoinTable(name="posts_categories")
      */
     private $category;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Esgi\BlogBundle\Entity\Comments", mappedBy="post")
+     **/
+    private $comments;
 
 
     /**
@@ -374,5 +380,38 @@ class Posts
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Add comments
+     *
+     * @param \Esgi\BlogBundle\Entity\Comments $comments
+     * @return Posts
+     */
+    public function addComment(\Esgi\BlogBundle\Entity\Comments $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \Esgi\BlogBundle\Entity\Comments $comments
+     */
+    public function removeComment(\Esgi\BlogBundle\Entity\Comments $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

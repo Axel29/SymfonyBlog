@@ -71,8 +71,14 @@ class Comments
 
     /**
      * @ORM\ManyToMany(targetEntity="Esgi\BlogBundle\Entity\Posts", inversedBy="comments", cascade={"persist", "merge"})
+     * * @ORM\JoinTable(name="comments_posts")
      */
     private $post;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Esgi\UserBundle\Entity\User", mappedBy="comments")
+     **/
+    private $user;
 
 
     /**
@@ -284,5 +290,38 @@ class Comments
     public function getPost()
     {
         return $this->post;
+    }
+
+    /**
+     * Add user
+     *
+     * @param \Esgi\UserBundle\Entity\User $user
+     * @return Comments
+     */
+    public function addUser(\Esgi\UserBundle\Entity\User $user)
+    {
+        $this->user[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \Esgi\UserBundle\Entity\User $user
+     */
+    public function removeUser(\Esgi\UserBundle\Entity\User $user)
+    {
+        $this->user->removeElement($user);
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

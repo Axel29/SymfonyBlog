@@ -22,8 +22,9 @@ class User extends BaseUser
 
     /**
      * @ORM\ManyToMany(targetEntity="Esgi\BlogBundle\Entity\Comments", inversedBy="user", cascade={"persist", "merge"})
+     * @ORM\JoinTable(name="user_comments")
      */
-    private $comment;
+    private $comments;
 
 
     /**
@@ -43,14 +44,14 @@ class User extends BaseUser
     }
 
     /**
-     * Add comment
+     * Add comments
      *
      * @param \Esgi\BlogBundle\Entity\Comments $comment
      * @return User
      */
-    public function addComment(\Esgi\BlogBundle\Entity\Comments $comment)
+    public function addComments(\Esgi\BlogBundle\Entity\Comments $comments)
     {
-        $this->comment[] = $comment;
+        $this->comments[] = $comments;
 
         return $this;
     }
@@ -62,16 +63,16 @@ class User extends BaseUser
      */
     public function removeComment(\Esgi\BlogBundle\Entity\Comments $comment)
     {
-        $this->comment->removeElement($comment);
+        $this->comments->removeElement($comment);
     }
 
     /**
-     * Get comment
+     * Get comments
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getComment()
+    public function getComments()
     {
-        return $this->comment;
+        return $this->comments;
     }
 }
