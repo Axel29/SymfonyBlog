@@ -1,6 +1,7 @@
 <?php
 // src/Esgi/BlogBundle/Admin/CategoriesAdmin.php
 
+
 namespace Esgi\BlogBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
@@ -14,7 +15,6 @@ class CategoriesAdmin extends Admin
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
-
         $formMapper
             ->add('categoryName', 'text', array('label' => 'Category Name'))
             ->add('categorySlug', 'text', array('label' => 'Category Slug'))
@@ -22,7 +22,7 @@ class CategoriesAdmin extends Admin
                     'choices' => array(
                         '0' => 'No',
                         '1' => 'Yes',
-                    )
+                    ),
                 )
             )
             ->end()
@@ -56,7 +56,7 @@ class CategoriesAdmin extends Admin
                     'view' => array(),
                     'edit' => array(),
                     'delete' => array(),
-                )
+                ),
             ));
     }
 

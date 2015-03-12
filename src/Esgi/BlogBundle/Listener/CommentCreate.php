@@ -1,6 +1,7 @@
 <?php
 // src/Esgi/BlogBundle/Listener/CommentCreate.php
 
+
 namespace Esgi\BlogBundle\Listener;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
@@ -33,7 +34,7 @@ class CommentCreate
                 try {
                     $query->getSingleResult();
                 } catch (\Doctrine\ORM\NoResultException $e) {
-                    return null;
+                    return;
                 }
             }
 

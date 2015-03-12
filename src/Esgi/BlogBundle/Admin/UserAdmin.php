@@ -1,6 +1,7 @@
 <?php
 // src/Esgi/BlogBundle/Admin/UserAdmin.php
 
+
 namespace Esgi\BlogBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
@@ -24,7 +25,7 @@ class UserAdmin extends Admin
                     'choices' => array(
                         '0' => 'Disabled',
                         '1' => 'Enabled',
-                    )
+                    ),
                 )
             )
             ->add('password', 'text', array('label' => 'Password'));
@@ -51,7 +52,7 @@ class UserAdmin extends Admin
                     'view' => array(),
                     'edit' => array(),
                     'delete' => array(),
-                )
+                ),
             ));
     }
 
@@ -64,7 +65,7 @@ class UserAdmin extends Admin
                     'choices' => array(
                         '0' => 'Disabled',
                         '1' => 'Enabled',
-                    )
+                    ),
                 )
             )
         ;

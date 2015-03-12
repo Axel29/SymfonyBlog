@@ -1,6 +1,7 @@
 <?php
 // src/Esgi/BlogBundle/Admin/PostAdmin.php
 
+
 namespace Esgi\BlogBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
@@ -28,11 +29,11 @@ class PostAdmin extends Admin
             ->add('post_title', 'text', array('label' => 'Post Title'))
             ->add('post_content', 'text', array('label' => 'Post Content'))
             ->add('post_status', 'choice', array(
-                    'choices' => $postStatuses
+                    'choices' => $postStatuses,
                 )
             )
             ->add('comments_allowed', 'choice', array(
-                    'choices' => $postCommentsAllowedValues
+                    'choices' => $postCommentsAllowedValues,
                 )
             )
             ->add('comments_count', 'hidden', array('data' => '0'))
@@ -64,7 +65,7 @@ class PostAdmin extends Admin
                     'view' => array(),
                     'edit' => array(),
                     'delete' => array(),
-                )
+                ),
             ));
     }
     protected function configureShowFields(ShowMapper $showMapper)

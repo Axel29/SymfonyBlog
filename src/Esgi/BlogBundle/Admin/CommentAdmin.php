@@ -1,6 +1,7 @@
 <?php
 // src/Esgi/BlogBundle/Admin/CommentAdmin.php
 
+
 namespace Esgi\BlogBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
@@ -25,11 +26,10 @@ class CommentAdmin extends Admin
                     'choices' => array(
                         '0' => 'Disapprouved',
                         '1' => 'Approuved',
-                    )
+                    ),
                 )
             )
         ;
-
     }
 
     // Fields to be shown on filter forms
@@ -55,7 +55,7 @@ class CommentAdmin extends Admin
                     'choices' => array(
                         '0' => 'Disapprouved',
                         '1' => 'Approuved',
-                    )
+                    ),
                 )
             )
             ->add('_action', 'actions', array(
@@ -63,7 +63,7 @@ class CommentAdmin extends Admin
                     'view' => array(),
                     'edit' => array(),
                     'delete' => array(),
-                )
+                ),
             ));
     }
 
