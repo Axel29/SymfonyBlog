@@ -21,6 +21,10 @@ class PostAdmin extends Admin
         $formMapper
             ->with('User')
             ->add('user')
+            ->end()
+            ->with('Categories')
+            ->add('categories')
+            ->end()
             ->add('post_title', 'text', array('label' => 'Post Title'))
             ->add('post_content', 'text', array('label' => 'Post Content'))
             ->add('post_status', 'choice', array(

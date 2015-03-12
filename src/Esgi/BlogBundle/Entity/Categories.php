@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Categories
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Esgi\BlogBundle\Entity\CategoriesRepository")
+ * @ORM\Entity
  */
 class Categories
 {
@@ -22,7 +22,7 @@ class Categories
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Esgi\BlogBundle\Entity\Posts", mappedBy="category")
+     * @ORM\ManyToMany(targetEntity="Esgi\BlogBundle\Entity\Posts", mappedBy="categories")
      **/
     private $posts;
 
@@ -162,5 +162,10 @@ class Categories
     public function getPosts()
     {
         return $this->posts;
+    }
+
+    public function __toString()
+    {
+        return ($this->getCategoryName()) ? : '';
     }
 }

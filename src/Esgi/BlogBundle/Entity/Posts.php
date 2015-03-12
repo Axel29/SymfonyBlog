@@ -94,7 +94,7 @@ class Posts
      * @ORM\ManyToMany(targetEntity="Esgi\BlogBundle\Entity\Categories", inversedBy="posts", cascade={"persist", "merge"})
      * @ORM\JoinTable(name="posts_categories")
      */
-    private $category;
+    private $categories;
 
     /**
      * @ORM\ManyToMany(targetEntity="Esgi\BlogBundle\Entity\Comments", mappedBy="post")
@@ -277,7 +277,7 @@ class Posts
      */
     public function __construct()
     {
-        $this->category = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -288,7 +288,7 @@ class Posts
      */
     public function addCategory(\Esgi\BlogBundle\Entity\Categories $category)
     {
-        $this->category[] = $category;
+        $this->categories[] = $category;
 
         return $this;
     }
@@ -300,17 +300,17 @@ class Posts
      */
     public function removeCategory(\Esgi\BlogBundle\Entity\Categories $category)
     {
-        $this->category->removeElement($category);
+        $this->categories->removeElement($category);
     }
 
     /**
-     * Get category
+     * Get categories
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getCategory()
+    public function getCategories()
     {
-        return $this->category;
+        return $this->categories;
     }
 
     /**
@@ -385,12 +385,12 @@ class Posts
     /**
      * Add comments
      *
-     * @param \Esgi\BlogBundle\Entity\Comments $comments
+     * @param \Esgi\BlogBundle\Entity\Comments $comment
      * @return Posts
      */
-    public function addComment(\Esgi\BlogBundle\Entity\Comments $comments)
+    public function addComment(\Esgi\BlogBundle\Entity\Comments $comment)
     {
-        $this->comments[] = $comments;
+        $this->comments[] = $comment;
 
         return $this;
     }
@@ -398,11 +398,11 @@ class Posts
     /**
      * Remove comments
      *
-     * @param \Esgi\BlogBundle\Entity\Comments $comments
+     * @param \Esgi\BlogBundle\Entity\Comments $comment
      */
-    public function removeComment(\Esgi\BlogBundle\Entity\Comments $comments)
+    public function removeComment(\Esgi\BlogBundle\Entity\Comments $comment)
     {
-        $this->comments->removeElement($comments);
+        $this->comments->removeElement($comment);
     }
 
     /**
