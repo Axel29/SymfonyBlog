@@ -45,7 +45,17 @@
                 <div class="span8">
                     <a href="{{ path('esgi_blog_post') }}" class="btn btn-primary">Retour à la liste</a>
                     <a href="{{ path('esgi_blog_post_edit', {'id' : entity.id }) }}" class="btn btn-warning">Modifier l'article</a>
-                    {{ form(delete_form) }}
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="pull-left">
+                    <h3>Comments</h3>
+                    {{ dump(postComments) }}
+                </div>
+                <div class="pull-right">
+                    <h3>Form</h3>
+                    {{ form(create_comment_form) }}
                 </div>
             </div>
         </div>
