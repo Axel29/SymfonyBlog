@@ -94,7 +94,7 @@ class UserController extends Controller
 
                 $userManager->updateUser($user);
             }
-            return $this->redirect($this->generateUrl('user_registerpage'));
+            return $this->redirect($this->generateUrl('esgi_blog_post'));
 
         }
 
