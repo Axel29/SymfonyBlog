@@ -39,7 +39,7 @@ class Posts
      *
      * @ORM\Column(name="post_update_at", type="datetime")
      */
-    private $postUpdateAt;
+    private $postUpdatedAt;
 
     /**
      * @var string
@@ -149,26 +149,26 @@ class Posts
     }
 
     /**
-     * Set postUpdateAt
+     * Set postUpdatedAt
      *
-     * @param \DateTime $postUpdateAt
+     * @param \DateTime $postUpdatedAt
      * @return Posts
      */
-    public function setPostUpdateAt($postUpdateAt)
+    public function setPostUpdatedAt($postUpdatedAt)
     {
-        $this->postUpdateAt = $postUpdateAt;
+        $this->postUpdatedAt = $postUpdatedAt;
 
         return $this;
     }
 
     /**
-     * Get postUpdateAt
+     * Get postUpdatedAt
      *
      * @return \DateTime 
      */
-    public function getPostUpdateAt()
+    public function getPostUpdatedAt()
     {
-        return $this->postUpdateAt;
+        return $this->postUpdatedAt;
     }
 
     /**

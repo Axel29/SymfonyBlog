@@ -50,10 +50,34 @@ assetic:
 #Fake Configuration
 bazinga_faker:
     orm: doctrine
+    locale: fr_FR
     entities:
+        Esgi\UserBundle\Entity\User:
+            number: 10
+            custom_formatters:
+                username: { method: userName }
+                email: { method: safeEmail }
+                enabled: { method: numberBetween, parameters: [ 0, 1 ] }
+                expiresAt: { method: dateTimeThisMonth }
+                credentialsExpireAt: { method: dateTimeThisMonth }
         Esgi\BlogBundle\Entity\Posts:
             number: 10
+            custom_formatters:
+                postStatus: { method: randomElement, parameters: [ ['Publié', 'En attente de validation', 'Supprimé' ] ]}
+                postSlug: { method: slug }
+                postCreatedAt: { method: dateTimeThisMonth }
+                postUpdatedAt: { method: dateTimeThisMonth }
+                commentsAllowed: { method: numberBetween, parameters: [ 0, 1 ] }
+                commentsCount: { method: randomDigit }
         Esgi\BlogBundle\Entity\Comments:
             number: 10
+            custom_formatters:
+                commentApprouved: { method: numberBetween, parameters: [ 0, 1 ] }
+                commentPostId: { method: randomDigit }
+                commentAuthor: { method: randomDigit }
+                commentCreatedAt: { method: dateTimeThisMonth }
+                commentUpdatedAt: { method: dateTimeThisMonth }
         Esgi\BlogBundle\Entity\Categories:
             number: 10
+            custom_formatters:
+                categorySlug: { method: slug }
