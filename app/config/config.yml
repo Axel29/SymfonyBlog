@@ -103,11 +103,12 @@ sonata_admin:
         groups:
             sonata_page1:
                 items:
-                    - sonata.admin.user
+                    - sonata.admin.users
             sonata_page2:
                 items:
-                    - sonata.admin.post
-                    - sonata.admin.comment
+                    - sonata.admin.posts
+                    - sonata.admin.categories
+                    - sonata.admin.comments
 
 sonata_block:
     default_contexts: [cms]

@@ -1,6 +1,6 @@
 # Esgi/BlogBundle/Resources/config/admin.yml
 services:
-    sonata.admin.post:
+    sonata.admin.posts:
         class: Esgi\BlogBundle\Admin\PostAdmin
         tags:
             -  name: sonata.admin
@@ -14,7 +14,21 @@ services:
         calls:
             - [ setTranslationDomain, [EsgiBlogBundle]]
 
-    sonata.admin.user:
+    sonata.admin.categories:
+        class: Esgi\BlogBundle\Admin\CategoriesAdmin
+        tags:
+            -  name: sonata.admin
+               manager_type: orm
+               group: "Categories"
+               label: "Categories"
+        arguments:
+            - ~
+            - Esgi\BlogBundle\Entity\Categories
+            - ~
+        calls:
+            - [ setTranslationDomain, [EsgiBlogBundle]]
+
+    sonata.admin.users:
         class: Esgi\BlogBundle\Admin\UserAdmin
         tags:
             -  name: sonata.admin
@@ -28,7 +42,7 @@ services:
         calls:
             - [ setTranslationDomain, [EsgiBlogBundle]]
 
-    sonata.admin.comment:
+    sonata.admin.comments:
         class: Esgi\BlogBundle\Admin\CommentAdmin
         tags:
             -  name: sonata.admin
