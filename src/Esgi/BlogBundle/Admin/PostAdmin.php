@@ -41,6 +41,12 @@ class PostAdmin extends Admin
             ->add('postTitle')
             ->add('postStatus')
             ->add('postContent')
-        ;
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'view' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ));
     }
 }
