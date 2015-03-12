@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Comments
+ * Comments.
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Esgi\BlogBundle\Entity\CommentsRepository")
@@ -73,11 +73,10 @@ class Comments
      **/
     private $user;
 
-
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -85,9 +84,10 @@ class Comments
     }
 
     /**
-     * Set commentAuthor
+     * Set commentAuthor.
      *
      * @param integer $commentAuthor
+     *
      * @return Comments
      */
     public function setCommentAuthor($commentAuthor)
@@ -98,9 +98,9 @@ class Comments
     }
 
     /**
-     * Get commentAuthor
+     * Get commentAuthor.
      *
-     * @return integer 
+     * @return integer
      */
     public function getCommentAuthor()
     {
@@ -108,9 +108,10 @@ class Comments
     }
 
     /**
-     * Set commentTitle
+     * Set commentTitle.
      *
      * @param string $commentTitle
+     *
      * @return Comments
      */
     public function setCommentTitle($commentTitle)
@@ -121,9 +122,9 @@ class Comments
     }
 
     /**
-     * Get commentTitle
+     * Get commentTitle.
      *
-     * @return string 
+     * @return string
      */
     public function getCommentTitle()
     {
@@ -131,9 +132,10 @@ class Comments
     }
 
     /**
-     * Set commentContent
+     * Set commentContent.
      *
      * @param string $commentContent
+     *
      * @return Comments
      */
     public function setCommentContent($commentContent)
@@ -144,9 +146,9 @@ class Comments
     }
 
     /**
-     * Get commentContent
+     * Get commentContent.
      *
-     * @return string 
+     * @return string
      */
     public function getCommentContent()
     {
@@ -154,9 +156,10 @@ class Comments
     }
 
     /**
-     * Set commentApprouved
+     * Set commentApprouved.
      *
      * @param integer $commentApprouved
+     *
      * @return Comments
      */
     public function setCommentApprouved($commentApprouved)
@@ -167,16 +170,16 @@ class Comments
     }
 
     /**
-     * Get commentApprouved
+     * Get commentApprouved.
      *
-     * @return integer 
+     * @return integer
      */
     public function getCommentApprouved()
     {
         return $this->commentApprouved;
     }
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -184,9 +187,10 @@ class Comments
     }
 
     /**
-     * Set created
+     * Set created.
      *
      * @param \DateTime $created
+     *
      * @return Comments
      */
     public function setCreated($created)
@@ -197,9 +201,9 @@ class Comments
     }
 
     /**
-     * Get created
+     * Get created.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -207,9 +211,10 @@ class Comments
     }
 
     /**
-     * Set updated
+     * Set updated.
      *
      * @param \DateTime $updated
+     *
      * @return Comments
      */
     public function setUpdated($updated)
@@ -220,9 +225,9 @@ class Comments
     }
 
     /**
-     * Get updated
+     * Get updated.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdated()
     {
@@ -230,9 +235,10 @@ class Comments
     }
 
     /**
-     * Add post
+     * Add post.
      *
      * @param \Esgi\BlogBundle\Entity\Posts $post
+     *
      * @return Comments
      */
     public function addPost(\Esgi\BlogBundle\Entity\Posts $post)
@@ -243,7 +249,7 @@ class Comments
     }
 
     /**
-     * Remove post
+     * Remove post.
      *
      * @param \Esgi\BlogBundle\Entity\Posts $post
      */
@@ -253,9 +259,9 @@ class Comments
     }
 
     /**
-     * Get post
+     * Get post.
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPost()
     {
@@ -263,9 +269,10 @@ class Comments
     }
 
     /**
-     * Add user
+     * Add user.
      *
      * @param \Esgi\UserBundle\Entity\User $user
+     *
      * @return Comments
      */
     public function addUser(\Esgi\UserBundle\Entity\User $user)
@@ -276,7 +283,7 @@ class Comments
     }
 
     /**
-     * Remove user
+     * Remove user.
      *
      * @param \Esgi\UserBundle\Entity\User $user
      */
@@ -286,9 +293,9 @@ class Comments
     }
 
     /**
-     * Get user
+     * Get user.
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getUser()
     {

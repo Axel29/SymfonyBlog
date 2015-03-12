@@ -4,7 +4,6 @@ namespace Esgi\BlogBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Esgi\BlogBundle\Entity\Posts;
 use Esgi\BlogBundle\Form\PostsType;
 use Esgi\BlogBundle\Entity\Comments;
@@ -12,14 +11,11 @@ use Esgi\BlogBundle\Form\CommentsType;
 
 /**
  * Posts controller.
- *
  */
 class PostsController extends Controller
 {
-
     /**
      * Lists all Posts entities.
-     *
      */
     public function indexAction()
     {
@@ -34,7 +30,6 @@ class PostsController extends Controller
 
     /**
      * Creates a new Comments entity.
-     *
      */
     public function createCommentAction(Request $request)
     {
@@ -58,7 +53,6 @@ class PostsController extends Controller
 
     /**
      * Creates a new Posts entity.
-     *
      */
     public function createAction(Request $request)
     {
@@ -79,8 +73,6 @@ class PostsController extends Controller
             'form'   => $form->createView(),
         ));
     }
-
-
 
     /**
      * Creates a form to create a Posts entity.
@@ -119,19 +111,17 @@ class PostsController extends Controller
             'Add Comment',
             'submit',
             array(
-                'attr'  => array('class' => 'btn btn-primary pull-right')),
+                'attr'  => array('class' => 'btn btn-primary pull-right'), ),
             array(
-                'label' => 'Add Comment'
+                'label' => 'Add Comment',
             )
         );
+
         return $form;
     }
 
-
-
     /**
      * Displays a form to create a new Posts entity.
-     *
      */
     public function newAction()
     {
@@ -169,7 +159,6 @@ class PostsController extends Controller
         $comments = new Comments();
         $newCommentForm   = $this->createCommentForm($comments, $request);
 
-
         return $this->render('EsgiBlogBundle:Posts:show.html.twig', array(
             'entity'      => $entity,
             'comments'    => $comments,
@@ -180,7 +169,6 @@ class PostsController extends Controller
 
     /**
      * Displays a form to edit an existing Posts entity.
-     *
      */
     public function editAction($id)
     {
@@ -203,12 +191,12 @@ class PostsController extends Controller
     }
 
     /**
-    * Creates a form to edit a Posts entity.
-    *
-    * @param Posts $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Posts entity.
+     *
+     * @param Posts $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(Posts $entity)
     {
         $form = $this->createForm(new PostsType(), $entity, array(
@@ -222,7 +210,6 @@ class PostsController extends Controller
     }
     /**
      * Edits an existing Posts entity.
-     *
      */
     public function updateAction(Request $request, $id)
     {
@@ -252,7 +239,6 @@ class PostsController extends Controller
     }
     /**
      * Deletes a Posts entity.
-     *
      */
     public function deleteAction(Request $request, $id)
     {
@@ -286,7 +272,7 @@ class PostsController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('esgi_blog_post_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Supprimer','attr' => array('class'=>'btn btn-danger')))
+            ->add('submit', 'submit', array('label' => 'Supprimer', 'attr' => array('class' => 'btn btn-danger')))
             ->getForm()
         ;
     }

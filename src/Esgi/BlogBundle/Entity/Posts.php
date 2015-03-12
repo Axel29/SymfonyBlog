@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Posts
+ * Posts.
  *
  * @ORM\Table(name="Posts")
  * @ORM\Entity(repositoryClass="Esgi\BlogBundle\Entity\PostsRepository")
@@ -33,7 +33,6 @@ class Posts
      * @Gedmo\Timestampable(on="update")
      */
     private $updated;
-
 
     /**
      * @var string
@@ -101,11 +100,10 @@ class Posts
      **/
     private $comments;
 
-
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -113,9 +111,10 @@ class Posts
     }
 
     /**
-     * Set postTitle
+     * Set postTitle.
      *
      * @param string $postTitle
+     *
      * @return Posts
      */
     public function setPostTitle($postTitle)
@@ -126,9 +125,9 @@ class Posts
     }
 
     /**
-     * Get postTitle
+     * Get postTitle.
      *
-     * @return string 
+     * @return string
      */
     public function getPostTitle()
     {
@@ -136,9 +135,10 @@ class Posts
     }
 
     /**
-     * Set postContent
+     * Set postContent.
      *
      * @param string $postContent
+     *
      * @return Posts
      */
     public function setPostContent($postContent)
@@ -149,9 +149,9 @@ class Posts
     }
 
     /**
-     * Get postContent
+     * Get postContent.
      *
-     * @return string 
+     * @return string
      */
     public function getPostContent()
     {
@@ -159,9 +159,10 @@ class Posts
     }
 
     /**
-     * Set postStatus
+     * Set postStatus.
      *
      * @param string $postStatus
+     *
      * @return Posts
      */
     public function setPostStatus($postStatus)
@@ -172,7 +173,7 @@ class Posts
     }
 
     /**
-     * Get postStatus
+     * Get postStatus.
      *
      * @return string
      */
@@ -182,9 +183,10 @@ class Posts
     }
 
     /**
-     * Set commentsAllowed
+     * Set commentsAllowed.
      *
      * @param integer $commentsAllowed
+     *
      * @return Posts
      */
     public function setCommentsAllowed($commentsAllowed)
@@ -195,9 +197,9 @@ class Posts
     }
 
     /**
-     * Get commentsAllowed
+     * Get commentsAllowed.
      *
-     * @return integer 
+     * @return integer
      */
     public function getCommentsAllowed()
     {
@@ -205,9 +207,10 @@ class Posts
     }
 
     /**
-     * Set commentsCount
+     * Set commentsCount.
      *
      * @param integer $commentsCount
+     *
      * @return Posts
      */
     public function setCommentsCount($commentsCount)
@@ -218,9 +221,9 @@ class Posts
     }
 
     /**
-     * Get commentsCount
+     * Get commentsCount.
      *
-     * @return integer 
+     * @return integer
      */
     public function getCommentsCount()
     {
@@ -228,9 +231,10 @@ class Posts
     }
 
     /**
-     * Set postImage
+     * Set postImage.
      *
      * @param string $postImage
+     *
      * @return Posts
      */
     public function setPostImage($postImage)
@@ -241,9 +245,9 @@ class Posts
     }
 
     /**
-     * Get postImage
+     * Get postImage.
      *
-     * @return string 
+     * @return string
      */
     public function getPostImage()
     {
@@ -251,9 +255,10 @@ class Posts
     }
 
     /**
-     * Set postSlug
+     * Set postSlug.
      *
      * @param string $postSlug
+     *
      * @return Posts
      */
     public function setPostSlug($postSlug)
@@ -264,16 +269,16 @@ class Posts
     }
 
     /**
-     * Get postSlug
+     * Get postSlug.
      *
-     * @return string 
+     * @return string
      */
     public function getPostSlug()
     {
         return $this->postSlug;
     }
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -281,9 +286,10 @@ class Posts
     }
 
     /**
-     * Add category
+     * Add category.
      *
      * @param \Esgi\BlogBundle\Entity\Categories $category
+     *
      * @return Posts
      */
     public function addCategory(\Esgi\BlogBundle\Entity\Categories $category)
@@ -294,7 +300,7 @@ class Posts
     }
 
     /**
-     * Remove category
+     * Remove category.
      *
      * @param \Esgi\BlogBundle\Entity\Categories $category
      */
@@ -304,9 +310,9 @@ class Posts
     }
 
     /**
-     * Get categories
+     * Get categories.
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCategories()
     {
@@ -314,9 +320,10 @@ class Posts
     }
 
     /**
-     * Set user
+     * Set user.
      *
      * @param \Esgi\UserBundle\Entity\User $user
+     *
      * @return Posts
      */
     public function setUser(\Esgi\UserBundle\Entity\User $user)
@@ -327,9 +334,9 @@ class Posts
     }
 
     /**
-     * Get user
+     * Get user.
      *
-     * @return \Esgi\UserBundle\Entity\User 
+     * @return \Esgi\UserBundle\Entity\User
      */
     public function getUser()
     {
@@ -337,9 +344,10 @@ class Posts
     }
 
     /**
-     * Set created
+     * Set created.
      *
      * @param \DateTime $created
+     *
      * @return Posts
      */
     public function setCreated($created)
@@ -350,9 +358,9 @@ class Posts
     }
 
     /**
-     * Get created
+     * Get created.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -360,9 +368,10 @@ class Posts
     }
 
     /**
-     * Set updated
+     * Set updated.
      *
      * @param \DateTime $updated
+     *
      * @return Posts
      */
     public function setUpdated($updated)
@@ -373,9 +382,9 @@ class Posts
     }
 
     /**
-     * Get updated
+     * Get updated.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdated()
     {
@@ -383,9 +392,10 @@ class Posts
     }
 
     /**
-     * Add comments
+     * Add comments.
      *
      * @param \Esgi\BlogBundle\Entity\Comments $comment
+     *
      * @return Posts
      */
     public function addComment(\Esgi\BlogBundle\Entity\Comments $comment)
@@ -396,7 +406,7 @@ class Posts
     }
 
     /**
-     * Remove comments
+     * Remove comments.
      *
      * @param \Esgi\BlogBundle\Entity\Comments $comment
      */
@@ -406,16 +416,17 @@ class Posts
     }
 
     /**
-     * Get comments
+     * Get comments.
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getComments()
     {
         return $this->comments;
     }
 
-    public function __toString(){
-        return ($this->getPostTitle()) ? : '';
+    public function __toString()
+    {
+        return ($this->getPostTitle()) ?: '';
     }
 }

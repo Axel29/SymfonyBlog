@@ -2,6 +2,7 @@
 
 // src/Esgi/BlogBundle/Listener/DoctrineExtensionListener.php
 
+
 namespace Esgi\BlogBundle\Listener;
 
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;

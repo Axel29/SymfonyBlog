@@ -4,20 +4,16 @@ namespace Esgi\BlogBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Esgi\BlogBundle\Entity\Comments;
 use Esgi\BlogBundle\Form\CommentsType;
 
 /**
  * Comments controller.
- *
  */
 class CommentsController extends Controller
 {
-
     /**
      * Lists all Comments entities.
-     *
      */
     public function indexAction()
     {
@@ -31,7 +27,6 @@ class CommentsController extends Controller
     }
     /**
      * Creates a new Comments entity.
-     *
      */
     public function createAction(Request $request)
     {
@@ -74,7 +69,6 @@ class CommentsController extends Controller
 
     /**
      * Displays a form to create a new Comments entity.
-     *
      */
     public function newAction()
     {
@@ -89,7 +83,6 @@ class CommentsController extends Controller
 
     /**
      * Finds and displays a Comments entity.
-     *
      */
     public function showAction($id)
     {
@@ -111,7 +104,6 @@ class CommentsController extends Controller
 
     /**
      * Displays a form to edit an existing Comments entity.
-     *
      */
     public function editAction($id)
     {
@@ -134,12 +126,12 @@ class CommentsController extends Controller
     }
 
     /**
-    * Creates a form to edit a Comments entity.
-    *
-    * @param Comments $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Comments entity.
+     *
+     * @param Comments $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(Comments $entity)
     {
         $form = $this->createForm(new CommentsType(), $entity, array(
@@ -153,7 +145,6 @@ class CommentsController extends Controller
     }
     /**
      * Edits an existing Comments entity.
-     *
      */
     public function updateAction(Request $request, $id)
     {
@@ -183,7 +174,6 @@ class CommentsController extends Controller
     }
     /**
      * Deletes a Comments entity.
-     *
      */
     public function deleteAction(Request $request, $id)
     {

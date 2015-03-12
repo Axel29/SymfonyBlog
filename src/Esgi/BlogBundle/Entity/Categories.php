@@ -5,7 +5,7 @@ namespace Esgi\BlogBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Categories
+ * Categories.
  *
  * @ORM\Table()
  * @ORM\Entity
@@ -47,11 +47,10 @@ class Categories
      */
     private $categoryIncludeInMenu;
 
-
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -59,9 +58,10 @@ class Categories
     }
 
     /**
-     * Set categorySlug
+     * Set categorySlug.
      *
      * @param string $categorySlug
+     *
      * @return Categories
      */
     public function setCategorySlug($categorySlug)
@@ -72,9 +72,9 @@ class Categories
     }
 
     /**
-     * Get categorySlug
+     * Get categorySlug.
      *
-     * @return string 
+     * @return string
      */
     public function getCategorySlug()
     {
@@ -82,9 +82,10 @@ class Categories
     }
 
     /**
-     * Set categoryName
+     * Set categoryName.
      *
      * @param string $categoryName
+     *
      * @return Categories
      */
     public function setCategoryName($categoryName)
@@ -95,9 +96,9 @@ class Categories
     }
 
     /**
-     * Get categoryName
+     * Get categoryName.
      *
-     * @return string 
+     * @return string
      */
     public function getCategoryName()
     {
@@ -105,7 +106,7 @@ class Categories
     }
 
     /**
-     * Get categoryIncludeInMenu
+     * Get categoryIncludeInMenu.
      *
      * @return string
      */
@@ -115,7 +116,7 @@ class Categories
     }
 
     /**
-     * Set categoryIncludeInMenu
+     * Set categoryIncludeInMenu.
      *
      * @param string $categoryIncludeInMenu
      */
@@ -124,7 +125,7 @@ class Categories
         $this->categoryIncludeInMenu = $categoryIncludeInMenu;
     }
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -132,9 +133,10 @@ class Categories
     }
 
     /**
-     * Add posts
+     * Add posts.
      *
      * @param \Esgi\BlogBundle\Entity\Posts $posts
+     *
      * @return Categories
      */
     public function addPost(\Esgi\BlogBundle\Entity\Posts $posts)
@@ -145,7 +147,7 @@ class Categories
     }
 
     /**
-     * Remove posts
+     * Remove posts.
      *
      * @param \Esgi\BlogBundle\Entity\Posts $posts
      */
@@ -155,9 +157,9 @@ class Categories
     }
 
     /**
-     * Get posts
+     * Get posts.
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPosts()
     {
@@ -166,6 +168,6 @@ class Categories
 
     public function __toString()
     {
-        return ($this->getCategoryName()) ? : '';
+        return ($this->getCategoryName()) ?: '';
     }
 }
