@@ -12,6 +12,8 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostsRepository extends EntityRepository
 {
+    private $validPostStatus = 'Publié';
+
     /**
      * Get post datas by it's ID joined to User's Entity
      *
@@ -21,11 +23,15 @@ class PostsRepository extends EntityRepository
     {
         $query = $this->getEntityManager()
             ->createQuery('
-            SELECT p, u
-            FROM EsgiBlogBundle:Posts p
-            JOIN p.user u
-            WHERE p.id = :id'
-            )->setParameter('id', $id);
+                SELECT p, u
+                FROM EsgiBlogBundle:Posts p
+                JOIN p.user u
+                WHERE p.id = :id
+                AND p.postStatus = :postStatus'
+            )
+            ->setParameter('id', $id)
+            ->setParameter('p.postStatus', $this->validPostStatus)
+        ;
 
         try {
             return $query->getSingleResult();
@@ -41,13 +47,18 @@ class PostsRepository extends EntityRepository
      */
     public function findOneBySlugJoinedToUser($postSlug)
     {
+
         $query = $this->getEntityManager()
             ->createQuery('
             SELECT p, u
             FROM EsgiBlogBundle:Posts p
             JOIN p.user u
-            WHERE p.postSlug = :postSlug'
-            )->setParameter('postSlug', $postSlug);
+            WHERE p.postSlug = :postSlug
+            AND p.postStatus = :postStatus'
+            )
+            ->setParameter('postSlug', $postSlug)
+            ->setParameter('postStatus', $this->validPostStatus)
+        ;
 
         try {
             return $query->getSingleResult();
@@ -70,7 +81,9 @@ class PostsRepository extends EntityRepository
             ->addSelect('c');
 
         $query = $query->add('where', $query->expr()->in('c', ':c'))
+            ->andWhere('p.postStatus = :postStatus')
             ->setParameter('c', $id)
+            ->setParameter('postStatus', $this->validPostStatus)
             ->getQuery()
             ->getResult();
 

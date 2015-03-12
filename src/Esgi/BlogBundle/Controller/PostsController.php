@@ -25,7 +25,7 @@ class PostsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('EsgiBlogBundle:Posts')->findAll();
+        $entities = $em->getRepository('EsgiBlogBundle:Posts')->findByPostStatus('Publié');
 
         return $this->render('EsgiBlogBundle:Posts:index.html.twig', array(
             'entities' => $entities,
@@ -88,7 +88,15 @@ class PostsController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add(
+            'Add Comment',
+            'submit',
+            array(
+                'attr'  => array('class' => 'btn btn-primary pull-right')),
+            array(
+                'label' => 'Add Comment'
+            )
+        );
 
         return $form;
     }
@@ -122,7 +130,7 @@ class PostsController extends Controller
         $entity = $em->getRepository('EsgiBlogBundle:Posts')->findOneBySlugJoinedToUser($slug);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Posts entity.');
+            throw $this->createNotFoundException('The post doesn\'t exists.');
         }
 
         $id           = $entity->getId();
@@ -134,6 +142,7 @@ class PostsController extends Controller
 
         $comments = new Comments();
         $newCommentForm   = $this->createCommentForm($comments);
+
 
         return $this->render('EsgiBlogBundle:Posts:show.html.twig', array(
             'entity'      => $entity,
@@ -154,7 +163,7 @@ class PostsController extends Controller
         $entity = $em->getRepository('EsgiBlogBundle:Posts')->findOneByIdJoinedToUser($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Posts entity.');
+            throw $this->createNotFoundException('The post doesn\'t exists.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -196,7 +205,7 @@ class PostsController extends Controller
         $entity = $em->getRepository('EsgiBlogBundle:Posts')->findOneByIdJoinedToUser($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Posts entity.');
+            throw $this->createNotFoundException('The post doesn\'t exists.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -229,7 +238,7 @@ class PostsController extends Controller
             $entity = $em->getRepository('EsgiBlogBundle:Posts')->findOneByIdJoinedToUser($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Posts entity.');
+                throw $this->createNotFoundException('The post doesn\'t exists.');
             }
 
             $em->remove($entity);
