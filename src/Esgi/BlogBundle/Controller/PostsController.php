@@ -121,14 +121,12 @@ class PostsController extends Controller
 
         $entity = $em->getRepository('EsgiBlogBundle:Posts')->findOneBySlugJoinedToUser($slug);
 
-
-
-
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Posts entity.');
         }
 
-        $postComments = $em->getRepository('EsgiBlogBundle:Comments')->findByPost($entity->getId());
+        $id           = $entity->getId();
+        $postComments = $em->getRepository('EsgiBlogBundle:Comments')->findByPost($id);
 
         if (!$postComments) {
             $postComments = array();
