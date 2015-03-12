@@ -47,7 +47,7 @@
             <div class="row">
                 <div class="span8">
                     <a href="{{ path('esgi_blog_post') }}" class="btn btn-primary">Retour à la liste</a>
-                    <a href="{{ path('esgi_blog_post_edit', {'id' : entity.id }) }}" class="btn btn-warning">Modifier l'article</a>
+                    <!--<a href="{{ path('esgi_blog_post_edit', {'id' : entity.id }) }}" class="btn btn-warning">Modifier l'article</a>-->
 
                 </div>
             </div>
@@ -70,8 +70,15 @@
                     {% endfor %}
                 </div>
                 <div class="pull-right col-md-4">
-                    <h3>Form</h3>
-                    {{ form(create_comment_form) }}
+                    <h3>Submit a comment</h3>
+                    {{ form_start(create_comment_form) }}
+                        {{ form_errors(create_comment_form) }}
+
+                        {{ form_row(create_comment_form.commentTitle) }}
+                        {{ form_row(create_comment_form.commentContent) }}
+                        {{ form_row(create_comment_form.submit) }}
+
+                    {{ form_end(create_comment_form, {'render_rest': false}) }}
                 </div>
             </div>
         </div>
@@ -113,7 +120,7 @@
                                 </a>
                             </li>
                         </ul>
-                        <p class="copyright text-muted">Copyright &copy; Your Website 2014</p>
+                        <p class="copyright text-muted">Copyright &copy; Les BG 2015</p>
                     </div>
                 </div>
             </div>
