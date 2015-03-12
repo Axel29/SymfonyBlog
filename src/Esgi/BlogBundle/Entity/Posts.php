@@ -414,4 +414,8 @@ class Posts
     {
         return $this->comments;
     }
+
+    public function __toString(){
+        return ($this->getPostTitle()) ? : '';
+    }
 }

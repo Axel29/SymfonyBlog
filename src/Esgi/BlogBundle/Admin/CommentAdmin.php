@@ -15,10 +15,20 @@ class CommentAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-
+            ->with('Posts')
+            ->add('post')
+            ->end()
             ->add('commentAuthor')
             ->add('commentTitle')
-            ->add('commentContent');
+            ->add('commentContent')
+            ->add('commentApprouved', 'choice', array(
+                    'choices' => array(
+                        '0' => 'Disapprouved',
+                        '1' => 'Approuved',
+                    )
+                )
+            )
+        ;
 
     }
 
@@ -41,6 +51,13 @@ class CommentAdmin extends Admin
             ->add('commentTitle')
             ->add('commentContent')
             ->add('created')
+            ->add('commentApprouved', 'choice', array(
+                    'choices' => array(
+                        '0' => 'Disapprouved',
+                        '1' => 'Approuved',
+                    )
+                )
+            )
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'view' => array(),

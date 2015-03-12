@@ -25,13 +25,6 @@ class Comments
     /**
      * @var integer
      *
-     * @ORM\Column(name="comment_post_id", type="integer")
-     */
-    private $commentPostId;
-
-    /**
-     * @var integer
-     *
      * @ORM\Column(name="comment_author", type="integer")
      */
     private $commentAuthor;
@@ -89,29 +82,6 @@ class Comments
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set commentPostId
-     *
-     * @param integer $commentPostId
-     * @return Comments
-     */
-    public function setCommentPostId($commentPostId)
-    {
-        $this->commentPostId = $commentPostId;
-
-        return $this;
-    }
-
-    /**
-     * Get commentPostId
-     *
-     * @return integer 
-     */
-    public function getCommentPostId()
-    {
-        return $this->commentPostId;
     }
 
     /**
