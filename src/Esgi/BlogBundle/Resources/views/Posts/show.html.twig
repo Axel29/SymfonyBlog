@@ -50,8 +50,12 @@
             </div>
             <div class="row">
                 <div class="pull-left col-md-8">
-                    <h3>Comments</h3>
+
                     {% for comment in postComments %}
+
+                    {% if comment %}
+                        <h3>Comments</h3>
+                    {% endif %}
                     <div class="media">
                         <div class="media-left">
                             <a href="#">
@@ -68,7 +72,28 @@
                 </div>
                 <div class="pull-right col-md-4">
                     <h3>Form</h3>
-                    {{ form(create_comment_form) }}
+                    {{ form_start(create_comment_form) }}
+                    {{ form_errors(create_comment_form) }}
+
+                    <div class="form-group">
+                        {{ form_label(create_comment_form.commentTitle) }}
+                        {{ form_errors(create_comment_form.commentTitle) }}
+                        {{ form_widget(create_comment_form.commentTitle, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="form-group" >
+                        {{ form_label(create_comment_form.commentContent) }}
+                        {{ form_errors(create_comment_form.commentContent) }}
+                        {{ form_widget(create_comment_form.commentContent, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(create_comment_form.commentApprouved) }}
+                        {{ form_errors(create_comment_form.commentApprouved) }}
+                        {{ form_widget(create_comment_form.commentApprouved, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    {{ form_end(create_comment_form) }}
                 </div>
             </div>
         </div>

@@ -88,7 +88,15 @@ class PostsController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add(
+            'Add Comment',
+            'submit',
+            array(
+                'attr'  => array('class' => 'btn btn-primary pull-right')),
+            array(
+                'label' => 'Add Comment'
+            )
+        );
 
         return $form;
     }
@@ -134,6 +142,7 @@ class PostsController extends Controller
 
         $comments = new Comments();
         $newCommentForm   = $this->createCommentForm($comments);
+
 
         return $this->render('EsgiBlogBundle:Posts:show.html.twig', array(
             'entity'      => $entity,
