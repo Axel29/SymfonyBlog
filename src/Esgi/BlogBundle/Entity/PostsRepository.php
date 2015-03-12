@@ -35,6 +35,28 @@ class PostsRepository extends EntityRepository
     }
 
     /**
+     * Get post datas by it's slug joined to User's Entity
+     *
+     * @return Post
+     */
+    public function findOneBySlugJoinedToUser($postSlug)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery('
+            SELECT p, u
+            FROM EsgiBlogBundle:Posts p
+            JOIN p.user u
+            WHERE p.postSlug = :postSlug'
+            )->setParameter('postSlug', $postSlug);
+
+        try {
+            return $query->getSingleResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
+
+    /**
      * Find posts by categoy id
      *
      * @param $id
