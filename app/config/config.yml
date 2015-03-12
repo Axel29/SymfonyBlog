@@ -65,6 +65,12 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
 
+services:
+    esgiblogbundle.listener:
+        class: Esgi\BlogBundle\Listener\CommentCreate
+        tags:
+            - { name: doctrine.event_listener, event: postPersist }
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
