@@ -17,18 +17,21 @@ class CategoryController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EsgiBlogBundle:Categories')->findAllByCategorySlug($slug);
+        $category = $em->getRepository('EsgiBlogBundle:Categories')->findOneByCategorySlug($slug);
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Posts entity.');
+        if (!$category) {
+            throw $this->createNotFoundException('Unable to find the category');
         }
 
-        $id         = $entity->getId();
-        $deleteForm = $this->createDeleteForm($id);
+        $categoryId    = $category->getId();
+        $categoryPosts = $em->getRepository('EsgiBlogBundle:Posts')->findByCategory($categoryId);
 
-        return $this->render('EsgiBlogBundle:Posts:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+        if (!$categoryPosts) {
+            $categoryPosts = array();
+        }
+
+        return $this->render('EsgiBlogBundle:Categories:show.html.twig', array(
+            'categoryPosts'      => $categoryPosts,
         ));
     }
 }

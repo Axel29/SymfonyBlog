@@ -55,4 +55,19 @@ class PostsRepository extends EntityRepository
             return null;
         }
     }
+
+    public function findByCategory($id)
+    {
+        $query = $this->createQueryBuilder('p')
+            ->select('p')
+            ->leftJoin('p.category', 'c')
+            ->addSelect('c');
+
+        $query = $query->add('where', $query->expr()->in('c', ':c'))
+            ->setParameter('c', $id)
+            ->getQuery()
+            ->getResult();
+
+        return $query;
+    }
 }
