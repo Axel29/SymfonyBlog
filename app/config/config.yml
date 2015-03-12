@@ -89,8 +89,25 @@ sonata_admin:
 
     dashboard:
         blocks:
-        # display a dashboard block
-        - { position: right, type: sonata.admin.block.admin_list }
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [sonata_page1]
+            -
+                position: right
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [sonata_page2]
+
+        groups:
+            sonata_page1:
+                items:
+                    - sonata.admin.user
+            sonata_page2:
+                items:
+                    - sonata.admin.post
+                    - sonata.admin.comment
 
 sonata_block:
     default_contexts: [cms]

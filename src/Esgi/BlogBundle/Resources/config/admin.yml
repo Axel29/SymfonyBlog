@@ -6,7 +6,7 @@ services:
             -  name: sonata.admin
                manager_type: orm
                group: "Posts"
-               label: "Actions"
+               label: "Posts"
         arguments:
             - ~
             - Esgi\BlogBundle\Entity\Posts
@@ -15,15 +15,30 @@ services:
             - [ setTranslationDomain, [EsgiBlogBundle]]
 
     sonata.admin.user:
-            class: Esgi\BlogBundle\Admin\UserAdmin
-            tags:
-                -  name: sonata.admin
-                   manager_type: orm
-                   group: "Users"
-                   label: "Actions"
-            arguments:
-                - ~
-                - Esgi\UserBundle\Entity\User
-                - ~
-            calls:
-                - [ setTranslationDomain, [EsgiBlogBundle]]
+        class: Esgi\BlogBundle\Admin\UserAdmin
+        tags:
+            -  name: sonata.admin
+               manager_type: orm
+               group: "Users"
+               label: "Users"
+        arguments:
+            - ~
+            - Esgi\UserBundle\Entity\User
+            - ~
+        calls:
+            - [ setTranslationDomain, [EsgiBlogBundle]]
+
+    sonata.admin.comment:
+        class: Esgi\BlogBundle\Admin\CommentAdmin
+        tags:
+            -  name: sonata.admin
+               manager_type: orm
+               group: "Comments"
+               label: "Comments"
+        arguments:
+            - ~
+            - Esgi\BlogBundle\Entity\Comments
+            - ~
+        calls:
+            - [ setTranslationDomain, [EsgiBlogBundle]]
+

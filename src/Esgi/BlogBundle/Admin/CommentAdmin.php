@@ -1,5 +1,5 @@
 <?php
-// src/Esgi/BlogBundle/Admin/UserAdmin.php
+// src/Esgi/BlogBundle/Admin/CommentAdmin.php
 
 namespace Esgi\BlogBundle\Admin;
 
@@ -9,34 +9,27 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class UserAdmin extends Admin
+class CommentAdmin extends Admin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $container = $this->getConfigurationPool()->getContainer();
-        $userRoles = $container->get('esgi_blogbundle_helper.data')->getUserRoles();
-
         $formMapper
-            ->add('username', 'text', array('label' => 'Username'))
-            ->add('email', 'text', array('label' => 'Email'))
-            ->add('enabled', 'choice', array(
-                    'choices' => array(
-                        '0' => 'Disabled',
-                        '1' => 'Enabled',
-                    )
-                )
-            )
-            ->add('password', 'text', array('label' => 'Password'));
+
+            ->add('commentAuthor')
+            ->add('commentTitle')
+            ->add('commentContent');
+
     }
 
     // Fields to be shown on filter forms
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('username')
-            ->add('email');
+            ->add('commentAuthor')
+            ->add('commentTitle')
+            ->add('commentContent')
+            ->add('created');
     }
 
     // Fields to be shown on lists
@@ -44,8 +37,10 @@ class UserAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('id')
-            ->add('username')
-            ->add('email')
+            ->add('commentAuthor')
+            ->add('commentTitle')
+            ->add('commentContent')
+            ->add('created')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'view' => array(),
@@ -58,15 +53,10 @@ class UserAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('username')
-            ->add('email')
-            ->add('enabled', 'choice', array(
-                    'choices' => array(
-                        '0' => 'Disabled',
-                        '1' => 'Enabled',
-                    )
-                )
-            )
+            ->add('commentAuthor')
+            ->add('commentTitle')
+            ->add('commentContent')
+            ->add('created')
         ;
     }
 }
