@@ -31,6 +31,31 @@ class PostsController extends Controller
             'entities' => $entities,
         ));
     }
+
+    /**
+     * Creates a new Comments entity.
+     *
+     */
+    public function createCommentAction(Request $request)
+    {
+        $entity = new Comments();
+        $form = $this->createCreateForm($entity, $request);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($entity);
+            $em->flush();
+
+            foreach ($entity->getPost() as $post) {
+                $postId = $post->getId();
+                breack;
+            }
+        }
+
+        return $this->redirect($this->generateUrl('esgi_blog_post_show', array('id' => $postId)));
+    }
+
     /**
      * Creates a new Posts entity.
      *
@@ -54,6 +79,8 @@ class PostsController extends Controller
             'form'   => $form->createView(),
         ));
     }
+
+
 
     /**
      * Creates a form to create a Posts entity.
@@ -81,7 +108,7 @@ class PostsController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCommentForm(Comments $entity)
+    private function createCommentForm(Comments $entity, Request $request)
     {
         $form = $this->createForm(new CommentsType(), $entity, array(
             'action' => $this->generateUrl('esgi_blog_comments_create'),
@@ -97,7 +124,6 @@ class PostsController extends Controller
                 'label' => 'Add Comment'
             )
         );
-
         return $form;
     }
 
@@ -123,7 +149,7 @@ class PostsController extends Controller
      *
      * @param string $slug The post's slug
      */
-    public function showAction($slug, $format)
+    public function showAction($slug, $format, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -141,7 +167,7 @@ class PostsController extends Controller
         }
 
         $comments = new Comments();
-        $newCommentForm   = $this->createCommentForm($comments);
+        $newCommentForm   = $this->createCommentForm($comments, $request);
 
 
         return $this->render('EsgiBlogBundle:Posts:show.html.twig', array(
