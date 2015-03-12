@@ -1,0 +1,30 @@
+{% extends "EsgiUserBundle::layout.html.twig" %}
+{% block styleCss %}
+    .alert {
+    margin-left:0px !important;
+    }
+{% endblock styleCss %}
+
+{% block body %}
+
+    {% block fos_user_content %}
+        {% if insert is defined %}
+            <div class="alert alert-success alert-dismissable">
+                <i class="fa fa-check"></i>
+                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                L'utilisateur a été ajouté avec succès.
+            </div>
+        {%  endif %}
+        <div class="box box-primary">
+            <form action="{{ path('user_registerpage') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+                <div class="box-body">
+                    {{ form_widget(form) }}
+                </div>
+                <div class="box-footer">
+                    <input type="submit" value="Ajouter l'utilisateur" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    {% endblock %}
+
+{% endblock %}

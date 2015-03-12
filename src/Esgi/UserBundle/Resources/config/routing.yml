@@ -1,3 +1,13 @@
-esgi_user_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: EsgiUserBundle:Default:index }
+user_loginpage:
+    path:     /login
+    defaults: { _controller: "EsgiUserBundle:User:index" }
+
+user_login_check:
+    pattern:   /login_check
+    defaults: { _controller: "EsgiUserBundle:User:check" }
+    requirements:
+                _method: POST
+
+user_registerpage:
+    path:     /register
+    defaults: { _controller: "EsgiUserBundle:User:register" }

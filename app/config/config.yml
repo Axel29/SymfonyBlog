@@ -82,13 +82,19 @@ stof_doctrine_extensions:
 
 sonata_admin:
     title:      Symfony Blog
+    templates:
+        # other configuration options
+        search:              SonataAdminBundle:Core:search.html.twig
+        search_result_block: SonataAdminBundle:Block:block_search_result.html.twig
 
 sonata_block:
     default_contexts: [cms]
     blocks:
         # Enable the SonataAdminBundle block
         sonata.admin.block.admin_list:
-            contexts:   [admin]
+            contexts:  [admin]
+        sonata.admin.block.search_result:
+            contexts:  [admin]
 
 #FosUserBundle Configuration
 fos_user:
