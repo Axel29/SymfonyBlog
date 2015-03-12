@@ -35,7 +35,7 @@
                 <div class="span8">
                     <p>
                         <i class="icon-user"></i> by <a href="#">{{ entity.user.username }}</a>
-                        | <i class="icon-calendar"></i> {{ entity.postCreatedAt|date('d-m-Y \\à H:i:s') }}
+                        | <i class="icon-calendar"></i> {{ entity.created|date('d-m-Y \\à H:i:s') }}
                         | <i class="icon-comment"></i> <a href="#">{{ entity.commentsCount }} Comments</a>
                         | <i class="icon-tags"></i> Statut : <a href="#"><span class="label label-info">{{ entity.postStatus }}</span></a>
                     </p>
