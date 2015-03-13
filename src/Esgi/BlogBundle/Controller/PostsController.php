@@ -41,14 +41,9 @@ class PostsController extends Controller
             throw $this->createNotFoundException('The post doesn\'t exist.');
         }
 
-        /*$id           = $post->getId();
-        $postComments = $em->getRepository('EsgiBlogBundle:Comments')->findByPost($id);*/
-
-        $postComments = $post->getComments();
-
-        /*if (!$postComments) {
-            $postComments = array();
-        }*/
+        // Using "findByPost($id)" overrided in CommentsRepository to add filter on commentApprouved's field.
+        $id           = $post->getId();
+        $postComments = $em->getRepository('EsgiBlogBundle:Comments')->findByPost($id);
 
         $comments = new Comments();
         $comments->setPost($post);

@@ -54,7 +54,7 @@
                 <div class="row">
                     <div class="pull-left col-md-8">
                         <h3>Comments</h3>
-                        {% if postComments %}
+                        {% if postComments|length > 0 %}
                             {% for comment in postComments %}
                                 <div class="media">
                                     <div class="media-left">
