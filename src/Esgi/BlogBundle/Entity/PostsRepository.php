@@ -16,32 +16,6 @@ class PostsRepository extends EntityRepository
     private $validPostStatus = 'Publié';
 
     /**
-     * Get post datas by it's ID joined to User's Entity.
-     *
-     * @return Post
-     */
-    public function findOneByIdJoinedToUser($id)
-    {
-        $query = $this->getEntityManager()
-            ->createQuery('
-                SELECT p, u
-                FROM EsgiBlogBundle:Posts p
-                JOIN p.user u
-                WHERE p.id = :id
-                AND p.postStatus = :postStatus'
-            )
-            ->setParameter('id', $id)
-            ->setParameter('p.postStatus', $this->validPostStatus)
-        ;
-
-        try {
-            return $query->getSingleResult();
-        } catch (\Doctrine\ORM\NoResultException $e) {
-            return;
-        }
-    }
-
-    /**
      * Get post datas by it's slug joined to User's Entity.
      *
      * @return Post
