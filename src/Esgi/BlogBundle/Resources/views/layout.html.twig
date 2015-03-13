@@ -36,12 +36,23 @@
                         <li>
                             <a href="{{ path('esgi_blog_post') }}">Home</a>
                         </li>
-                        <li>
-                            <a href="{{ path('user_registerpage') }}">Sign in</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('user_loginpage') }}">Login</a>
-                        </li>
+                        {% if is_granted('ROLE_USER') %}
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li>
+                                    <a href="{{ path('sonata_admin_dashboard') }}">Admin</a>
+                                </li>
+                            {% endif %}
+                            <li>
+                                <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="{{ path('user_registerpage') }}">Sign in</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('user_loginpage') }}">Login</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
