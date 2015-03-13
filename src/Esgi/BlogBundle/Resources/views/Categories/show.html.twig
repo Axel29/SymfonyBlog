@@ -19,7 +19,7 @@
                 {% for categoryPost in categoryPosts %}
                     <div class="post-preview">
                         <img src="http://lorempixel.com/700/250/sports/" />
-                        <a href="/SymfonyBlog/web/app_dev.php/blog/posts/{{ categoryPost.postSlug }}">
+                        <a href="{{ path('esgi_blog_post_show', {'slug': categoryPost.postSlug}) }}">
                             <h2 class="post-title">
                                 {{ categoryPost.postTitle }}
                             </h2>
