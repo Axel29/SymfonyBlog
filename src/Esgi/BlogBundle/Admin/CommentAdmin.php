@@ -19,9 +19,8 @@ class CommentAdmin extends Admin
             ->with('Posts')
             ->add('post')
             ->end()
-            ->add('commentAuthor')
             ->add('commentTitle')
-            ->add('commentContent')
+            ->add('commentContent', 'textarea', array('attr' => array('class' => 'tinymce')))
             ->add('commentApprouved', 'choice', array(
                     'choices' => array(
                         '0' => 'Disapprouved',
@@ -36,7 +35,6 @@ class CommentAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('commentAuthor')
             ->add('commentTitle')
             ->add('commentContent')
             ->add('created');
@@ -47,7 +45,6 @@ class CommentAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('id')
-            ->add('commentAuthor')
             ->add('commentTitle')
             ->add('commentContent')
             ->add('created')
@@ -70,7 +67,6 @@ class CommentAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('commentAuthor')
             ->add('commentTitle')
             ->add('commentContent')
             ->add('created')

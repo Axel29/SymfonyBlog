@@ -27,7 +27,7 @@ class PostAdmin extends Admin
             ->add('categories')
             ->end()
             ->add('post_title', 'text', array('label' => 'Post Title'))
-            ->add('post_content', 'text', array('label' => 'Post Content'))
+            ->add('post_content', 'textarea', array('attr' => array('class' => 'tinymce')))
             ->add('post_status', 'choice', array(
                     'choices' => $postStatuses,
                 )
