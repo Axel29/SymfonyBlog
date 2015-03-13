@@ -86,9 +86,4 @@ class PostAdmin extends Admin
             ->add('post_slug')
         ;
     }
-
-    private function getStatuses()
-    {
-
-    }
 }
