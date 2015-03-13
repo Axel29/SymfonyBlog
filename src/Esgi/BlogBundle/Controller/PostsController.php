@@ -17,13 +17,27 @@ class PostsController extends Controller
     /**
      * Lists all Posts entities.
      */
-    public function indexAction()
+    public function indexAction($page)
     {
+        $maxArticles = 5;
+
         $em       = $this->getDoctrine()->getManager();
-        $posts    = $em->getRepository('EsgiBlogBundle:Posts')->findBy(array('postStatus' => 'Publié'), null, 10, null);
+        $postCount = $em->getRepository('EsgiBlogBundle:Posts')->getPostsCount();
+
+        $pagination = array(
+            'page' => $page,
+            'route' => 'esgi_blog_post',
+            'pages_count' => ceil($postCount / $maxArticles),
+            'route_params' => array()
+        );
+
+        $articles = $this->getDoctrine()->getRepository('EsgiBlogBundle:Posts')
+            ->getList($page, $maxArticles);
+
 
         return $this->render('EsgiBlogBundle:Posts:index.html.twig', array(
-            'posts'      => $posts,
+            'posts' => $articles,
+            'pagination' => $pagination
         ));
     }
 

@@ -3,6 +3,7 @@
 namespace Esgi\BlogBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * PostsRepository.
@@ -89,4 +90,44 @@ class PostsRepository extends EntityRepository
 
         return $query;
     }
+
+    /**
+     * Get the paginated list of published articles
+     *
+     * @param int $page
+     * @param int $maxperpage
+     * @param string $sortby
+     * @return Paginator
+     */
+    public function getList($page=1, $maxperpage=10)
+    {
+        $query = $this->createQueryBuilder('p')
+            ->andWhere('p.postStatus = :postStatus')
+            ->setParameter('postStatus', $this->validPostStatus)
+            ->setFirstResult(($page-1) * $maxperpage)
+            ->setMaxResults($maxperpage)
+            ->getQuery()
+    //        ->getResult()
+        ;
+
+        return new Paginator($query);
+    }
+
+
+    /**
+     * Get count posts
+     *
+     * @return int
+     */
+    public function getPostsCount(){
+
+        return $this->createQueryBuilder('p')
+            ->select('count(p.id) as total')
+            ->andWhere('p.postStatus = :postStatus')
+            ->setParameter('postStatus', $this->validPostStatus)
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+    }
+
 }

@@ -6,7 +6,7 @@ esgi_user:
 
 esgi_blog:
     resource: "@EsgiBlogBundle/Resources/config/routing.yml"
-    prefix:   /blog
+    prefix:   /
 
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
