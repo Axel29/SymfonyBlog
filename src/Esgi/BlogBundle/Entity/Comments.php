@@ -56,8 +56,8 @@ class Comments
     private $commentApprouved;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Esgi\BlogBundle\Entity\Posts", inversedBy="comments", cascade={"persist", "merge"})
-     * * @ORM\JoinTable(name="comments_posts")
+     * @ORM\ManyToOne(targetEntity="Esgi\BlogBundle\Entity\Posts", inversedBy="comments", cascade={"persist", "merge"})
+     * @ORM\JoinTable(name="comments_posts")
      */
     private $post;
 
@@ -66,13 +66,6 @@ class Comments
      **/
     private $user;
 
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        $this->post = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Get id.
@@ -205,40 +198,6 @@ class Comments
     }
 
     /**
-     * Add post.
-     *
-     * @param \Esgi\BlogBundle\Entity\Posts $post
-     *
-     * @return Comments
-     */
-    public function addPost(\Esgi\BlogBundle\Entity\Posts $post)
-    {
-        $this->post[] = $post;
-
-        return $this;
-    }
-
-    /**
-     * Remove post.
-     *
-     * @param \Esgi\BlogBundle\Entity\Posts $post
-     */
-    public function removePost(\Esgi\BlogBundle\Entity\Posts $post)
-    {
-        $this->post->removeElement($post);
-    }
-
-    /**
-     * Get post.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPost()
-    {
-        return $this->post;
-    }
-
-    /**
      * Add user.
      *
      * @param \Esgi\UserBundle\Entity\User $user
@@ -271,4 +230,35 @@ class Comments
     {
         return $this->user;
     }
+
+    /**
+     * Set post
+     *
+     * @param \Esgi\BlogBundle\Entity\Posts $post
+     * @return Comments
+     */
+    public function setPost(\Esgi\BlogBundle\Entity\Posts $post = null)
+    {
+        $this->post = $post;
+
+        return $this;
+    }
+
+    /**
+     * Get post
+     *
+     * @return \Esgi\BlogBundle\Entity\Posts 
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
 }

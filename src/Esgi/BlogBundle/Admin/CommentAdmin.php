@@ -37,6 +37,13 @@ class CommentAdmin extends Admin
         $datagridMapper
             ->add('commentTitle')
             ->add('commentContent')
+            ->add('commentApprouved', 'doctrine_orm_choice', array(), 'choice', array(
+                    'choices' => array(
+                        '0' => 'Disapprouved',
+                        '1' => 'Approuved',
+                    ),
+                )
+            )
             ->add('created');
     }
 

@@ -60,6 +60,8 @@ class PostsRepository extends EntityRepository
         ;
 
         try {
+            /*echo "<pre>".print_r($query->getSingleResult(),true)."</pre>";
+            exit;*/
             return $query->getSingleResult();
         } catch (\Doctrine\ORM\NoResultException $e) {
             return;

@@ -45,10 +45,16 @@ class PostAdmin extends Admin
     // Fields to be shown on filter forms
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
+        $container    = $this->getConfigurationPool()->getContainer();
+        $postStatuses = $container->get('esgi_blogbundle_helper.data')->getPostStatuses();
+
         $datagridMapper
             ->add('id')
             ->add('postTitle')
-            ->add('postStatus')
+            ->add('postStatus', 'doctrine_orm_choice', array(), 'choice', array(
+                    'choices' => $postStatuses,
+                )
+            )
         ;
     }
 
@@ -79,5 +85,10 @@ class PostAdmin extends Admin
             ->add('post_image')
             ->add('post_slug')
         ;
+    }
+
+    private function getStatuses()
+    {
+
     }
 }

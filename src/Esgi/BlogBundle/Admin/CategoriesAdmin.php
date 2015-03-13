@@ -26,9 +26,6 @@ class CategoriesAdmin extends Admin
                 )
             )
             ->end()
-            ->with('Posts')
-            ->add('posts')
-            ->end()
         ;
     }
 
@@ -39,7 +36,13 @@ class CategoriesAdmin extends Admin
             ->add('id')
             ->add('categoryName')
             ->add('categorySlug')
-            ->add('categoryIncludeInMenu')
+            ->add('categoryIncludeInMenu', 'doctrine_orm_choice', array(), 'choice', array(
+                    'choices' => array(
+                        '0' => 'No',
+                        '1' => 'Yes',
+                    ),
+                )
+            )
         ;
     }
 
@@ -50,7 +53,13 @@ class CategoriesAdmin extends Admin
             ->addIdentifier('id')
             ->add('categoryName')
             ->add('categorySlug')
-            ->add('categoryIncludeInMenu')
+            ->add('categoryIncludeInMenu', 'choice', array(
+                    'choices' => array(
+                        '0' => 'No',
+                        '1' => 'Yes',
+                    ),
+                )
+            )
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'view' => array(),
@@ -66,7 +75,13 @@ class CategoriesAdmin extends Admin
         $showMapper
             ->add('categoryName')
             ->add('categorySlug')
-            ->add('categoryIncludeInMenu')
+            ->add('categoryIncludeInMenu', 'choice', array(
+                    'choices' => array(
+                        '0' => 'No',
+                        '1' => 'Yes',
+                    ),
+                )
+            )
         ;
     }
 }
