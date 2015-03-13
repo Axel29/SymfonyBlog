@@ -22,7 +22,8 @@ class Categories
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Esgi\BlogBundle\Entity\Posts", mappedBy="categories")
+     * @ORM\ManyToMany(targetEntity="Esgi\BlogBundle\Entity\Posts", mappedBy="categories", cascade={"persist", "merge"})
+     * @ORM\JoinTable(name="posts_categories")
      **/
     private $posts;
 
@@ -136,13 +137,13 @@ class Categories
     /**
      * Add posts.
      *
-     * @param \Esgi\BlogBundle\Entity\Posts $posts
+     * @param \Esgi\BlogBundle\Entity\Posts $post
      *
      * @return Categories
      */
-    public function addPost(\Esgi\BlogBundle\Entity\Posts $posts)
+    public function addPost(\Esgi\BlogBundle\Entity\Posts $post)
     {
-        $this->posts[] = $posts;
+        $this->posts[] = $post;
 
         return $this;
     }
@@ -150,11 +151,11 @@ class Categories
     /**
      * Remove posts.
      *
-     * @param \Esgi\BlogBundle\Entity\Posts $posts
+     * @param \Esgi\BlogBundle\Entity\Posts $post
      */
-    public function removePost(\Esgi\BlogBundle\Entity\Posts $posts)
+    public function removePost(\Esgi\BlogBundle\Entity\Posts $post)
     {
-        $this->posts->removeElement($posts);
+        $this->posts->removeElement($post);
     }
 
     /**
