@@ -69,7 +69,15 @@ services:
     esgiblogbundle.listener:
         class: Esgi\BlogBundle\Listener\CommentCreate
         tags:
-            - { name: doctrine.event_listener, event: postPersist }
+            - { name: doctrine }
+    esgimenu:
+            class: Esgi\BlogBundle\Extensions\EsgiMenu
+            arguments: [@session, @doctrine.orm.entity_manager]
+    twig.extension.esgimenu:
+        class: Esgi\BlogBundle\Extensions\EsgiMenuExtension
+        arguments: [@esgimenu]
+        tags:
+            - { name: twig.extension }
 
 # Swiftmailer Configuration
 swiftmailer:

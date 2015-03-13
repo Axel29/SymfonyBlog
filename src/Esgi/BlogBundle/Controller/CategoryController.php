@@ -13,8 +13,7 @@ class CategoryController extends Controller
      */
     public function showAction($slug)
     {
-        $em = $this->getDoctrine()->getManager();
-
+        $em       = $this->getDoctrine()->getManager();
         $category = $em->getRepository('EsgiBlogBundle:Categories')->findOneByCategorySlug($slug);
 
         if (!$category) {

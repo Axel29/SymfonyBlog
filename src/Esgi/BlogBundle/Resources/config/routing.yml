@@ -1,45 +1,22 @@
 # src/Esgi/BlogBundle/Resources/config/routing.yml
 
+esgi_blog_post:
+    path:     /
+    defaults: { _controller: "EsgiBlogBundle:Posts:index" }
+
 esgi_blog_category_show:
     path:     /category/{slug}.{format}
     defaults: { _controller: "EsgiBlogBundle:Category:show", format: html }
     requirements:
         format: html
 
-esgi_blog_post:
-    path:     /
-    defaults: { _controller: "EsgiBlogBundle:Posts:index" }
+esgi_blog_posts_create_comment:
+    path:     /posts/createComment
+    defaults: { _controller: "EsgiBlogBundle:Posts:createComment" }
+    methods:  POST
 
 esgi_blog_post_show:
     path:     /posts/{slug}.{format}
     defaults: { _controller: "EsgiBlogBundle:Posts:show", format: html }
     requirements:
         format: html
-
-esgi_blog_post_new:
-    path:     /new
-    defaults: { _controller: "EsgiBlogBundle:Posts:new" }
-
-esgi_blog_post_create:
-    path:     /create
-    defaults: { _controller: "EsgiBlogBundle:Posts:create" }
-    methods:  POST
-
-esgi_blog_post_edit:
-    path:     /edit/{id}
-    defaults: { _controller: "EsgiBlogBundle:Posts:edit" }
-    requirements:
-                 id: \d+
-
-
-esgi_blog_post_update:
-    path:     /update/{id}
-    defaults: { _controller: "EsgiBlogBundle:Posts:update" }
-    requirements:
-                 _method: PUT|POST
-                 id: \d+
-
-esgi_blog_posts_create_comment:
-    path:     /posts/createComment
-    defaults: { _controller: "EsgiBlogBundle:Posts:createComment" }
-    methods:  POST

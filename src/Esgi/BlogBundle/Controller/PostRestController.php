@@ -20,7 +20,7 @@ class PostRestController extends Controller
         $post = $this->getDoctrine()->getManager()->getRepository('EsgiBlogBundle:Posts')->find($id);
 
         if (!is_object($post)) {
-            $data = array("error" => "unknown post");
+            $data     = array("error" => "unknown post");
             $response = new Response(json_encode($data), 404);
             $response->headers->set('Content-Type', 'application/json', 'charset=utf-8');
 

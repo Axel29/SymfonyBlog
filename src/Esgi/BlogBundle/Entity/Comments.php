@@ -23,13 +23,6 @@ class Comments
     private $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="comment_author", type="integer")
-     */
-    private $commentAuthor;
-
-    /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="created", type="datetime")
      */
@@ -74,6 +67,14 @@ class Comments
     private $user;
 
     /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->post = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id.
      *
      * @return integer
@@ -81,30 +82,6 @@ class Comments
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set commentAuthor.
-     *
-     * @param integer $commentAuthor
-     *
-     * @return Comments
-     */
-    public function setCommentAuthor($commentAuthor)
-    {
-        $this->commentAuthor = $commentAuthor;
-
-        return $this;
-    }
-
-    /**
-     * Get commentAuthor.
-     *
-     * @return integer
-     */
-    public function getCommentAuthor()
-    {
-        return $this->commentAuthor;
     }
 
     /**
@@ -177,13 +154,6 @@ class Comments
     public function getCommentApprouved()
     {
         return $this->commentApprouved;
-    }
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        $this->post = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

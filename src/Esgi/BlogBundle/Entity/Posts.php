@@ -101,6 +101,14 @@ class Posts
     private $comments;
 
     /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id.
      *
      * @return integer
@@ -276,13 +284,6 @@ class Posts
     public function getPostSlug()
     {
         return $this->postSlug;
-    }
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

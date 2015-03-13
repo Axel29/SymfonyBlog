@@ -10,9 +10,9 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h1>Clean Blog</h1>
+                        <h1>Symfony Blog ESGI</h1>
                         <hr class="small">
-                        <span class="subheading">A Clean Blog Theme by Start Bootstrap</span>
+                        <span class="subheading">A blog developed by a four-men team of the ESGI</span>
                     </div>
                 </div>
             </div>
@@ -26,19 +26,19 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                {% for entity in entities %}
+                {% for post in posts %}
                 <div class="post-preview">
                     <img src="http://lorempixel.com/700/250/sports/" />
-                    <a href="{{ path('esgi_blog_post_show', {'slug': entity.postSlug }) }}">
+                    <a href="{{ path('esgi_blog_post_show', {'slug': post.postSlug }) }}">
                         <h2 class="post-title">
-                            {{ entity.postTitle }}
+                            {{ post.postTitle }}
                         </h2>
                     </a>
                     <div class="post-content">
-                        {{ entity.postContent|striptags|truncate(200, true) }}
+                        {{ post.postContent|striptags|truncate(200, true) }}
                     </div>
-                    <p class="post-meta">Posted by {{ entity.user.username }}, le {{ entity.created|date('Y-m-d H:i:s') }}</p>
-                    <span class="label label-default">Statut : {{ entity.postStatus }} </span></h3>
+                    <p class="post-meta">Posted by {{ post.user.username }}, le {{ post.created|date('Y-m-d H:i:s') }}</p>
+                    <span class="label label-default">Status: {{ post.postStatus }} </span></h3>
                 </div>
                 <hr>
                 {% endfor %}
@@ -56,41 +56,6 @@
 
 {% endblock content%}
 
-    {% block footer %}
-        <!-- Footer -->
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                        <ul class="list-inline text-center">
-                            <li>
-                                <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                                </a>
-                            </li>
-                        </ul>
-                        <p class="copyright text-muted">Copyright &copy; Les BG - 2015</p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    {% endblock footer %}
+{% block footer %}
+    {{ parent() }}
+{% endblock footer %}

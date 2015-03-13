@@ -19,7 +19,6 @@ class CommentsType extends AbstractType
             //->add('updated')
             ->add('commentTitle')
             ->add('commentContent')
-            ->add('commentApprouved')
         ;
     }
 

@@ -1,6 +1,6 @@
 {% extends '@EsgiBlog/layout.html.twig' %}
 {% block title %}
-    {{ entity.postTitle }}
+    {{ post.postTitle }}
 {% endblock %}
 
 {% block menu %}
@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h1>{{ entity.postTitle|truncate(10, true) }}</h1>
+                        <h1>{{ post.postTitle|truncate(10, true) }}</h1>
                         <hr class="small">
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                 <div class="row">
                     <div class="span6">
                         <p>
-                            {{ entity.postContent }}
+                            {{ post.postContent }}
                         </p>
 
                     </div>
@@ -37,17 +37,16 @@
                 <div class="row">
                     <div class="span8">
                         <p>
-                            <i class="icon-user"></i> by <a href="#">{{ entity.user.username }}</a>
-                            | <i class="icon-calendar"></i> {{ entity.created|date('d-m-Y \\à H:i:s') }}
-                            | <i class="icon-comment"></i> <a href="#">{{ entity.commentsCount }} Comments</a>
-                            | <i class="icon-tags"></i> Statut : <a href="#"><span class="label label-info">{{ entity.postStatus }}</span></a>
+                            <i class="icon-user"></i> by <a href="#">{{ post.user.username }}</a>
+                            | <i class="icon-calendar"></i> {{ post.created|date('d-m-Y \\à H:i:s') }}
+                            | <i class="icon-comment"></i> <a href="#">{{ post.commentsCount }} Comments</a>
+                            | <i class="icon-tags"></i> Status: <a href="#"><span class="label label-info">{{ post.postStatus }}</span></a>
                         </p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="span8">
-                        <a href="{{ path('esgi_blog_post') }}" class="btn btn-primary">Retour à la liste</a>
-                        <!--<a href="{{ path('esgi_blog_post_edit', {'id' : entity.id }) }}" class="btn btn-warning">Modifier l'article</a>-->
+                        <a href="{{ path('esgi_blog_post') }}" class="btn btn-primary">Back to the list</a>
 
                     </div>
                 </div>
@@ -64,7 +63,7 @@
                                 <div class="media-body">
                                     <h4 class="media-heading">{{ comment.commentTitle }}</h4>
                                     <p>{{ comment.commentContent }}</p>
-                                    <p>Publié le : <span class="label label-primary">{{ comment.created|date('d-m-Y \\à H:i:s') }}</span></p>
+                                    <p>Published at: <span class="label label-primary">{{ comment.created|date('d-m-Y \\à H:i:s') }}</span></p>
                                 </div>
                             </div>
                         {% endfor %}
@@ -76,7 +75,6 @@
 
                         {{ form_row(create_comment_form.commentTitle) }}
                         {{ form_row(create_comment_form.commentContent) }}
-                        {{ form_row(create_comment_form.commentApprouved) }}
 
                         {{ form_end(create_comment_form) }}
                     </div>
@@ -85,44 +83,8 @@
         </div>
     </div>
     <hr>
-
 {% endblock content %}
 
-    {% block footer %}
-        <!-- Footer -->
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                        <ul class="list-inline text-center">
-                            <li>
-                                <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                                </a>
-                            </li>
-                        </ul>
-                        <p class="copyright text-muted">Copyright &copy; Les BG 2015</p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    {% endblock footer %}
+{% block footer %}
+    {{ parent() }}
+{% endblock footer %}

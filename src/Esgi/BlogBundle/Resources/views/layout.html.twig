@@ -23,15 +23,24 @@
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <!-- Navigation menu -->
+                    <ul class="nav navbar-nav">
+                        {%  for category in esgimenu.getIncludeInMenuCategories() %}
+                            <li class="menu-level-1">
+                                <a href="{{ path('esgi_blog_category_show', {'slug': category.categorySlug}) }}">{{ category.categoryName }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <!-- End of navigation menu -->
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="{{ path('esgi_blog_post') }}">Home</a>
                         </li>
                         <li>
-                            <a href="{{ path('user_registerpage') }}">S'incrire</a>
+                            <a href="{{ path('user_registerpage') }}">Sign in</a>
                         </li>
                         <li>
-                            <a href="{{ path('user_loginpage') }}">Se connecter</a>
+                            <a href="{{ path('user_loginpage') }}">Login</a>
                         </li>
                     </ul>
                 </div>
@@ -50,12 +59,48 @@
     {% endblock content %}
 
     {% block footer %}
-
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <ul class="list-inline text-center">
+                            <li>
+                                <a href="#">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <p class="copyright text-muted">Copyright &copy; Les BG - 2015</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
     {% endblock footer %}
 
 {% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('bundles/esgiblog/js/jquery.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('bundles/esgiblog/js/clean-blog.min.js') }}" type="text/javascript"></script>
+    {{ parent() }}
+    <!-- <script src="{{ asset('bundles/esgiblog/js/clean-blog.min.js') }}" type="text/javascript"></script> -->
 {% endblock %}

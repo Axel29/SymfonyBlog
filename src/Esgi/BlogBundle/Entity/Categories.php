@@ -48,6 +48,14 @@ class Categories
     private $categoryIncludeInMenu;
 
     /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id.
      *
      * @return integer
@@ -123,13 +131,6 @@ class Categories
     public function setCategoryIncludeInMenu($categoryIncludeInMenu)
     {
         $this->categoryIncludeInMenu = $categoryIncludeInMenu;
-    }
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
