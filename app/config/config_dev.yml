@@ -79,5 +79,6 @@ bazinga_faker:
         Esgi\BlogBundle\Entity\Categories:
             number: 10
             custom_formatters:
+                categoryName: { method: numerify, parameters [ 'Category ###' ] }
                 categorySlug: { method: slug }
                 categoryIncludeInMenu: { method: numberBetween, parameters: [ 0, 1 ]}
