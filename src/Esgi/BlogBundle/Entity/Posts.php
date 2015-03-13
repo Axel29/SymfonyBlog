@@ -96,7 +96,7 @@ class Posts
     private $categories;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Esgi\BlogBundle\Entity\Comments", mappedBy="post")
+     * @ORM\OneToMany(targetEntity="Esgi\BlogBundle\Entity\Comments", mappedBy="post")
      **/
     private $comments;
 
@@ -106,6 +106,7 @@ class Posts
     public function __construct()
     {
         $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->comments   = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -392,42 +393,41 @@ class Posts
         return $this->updated;
     }
 
+    public function __toString()
+    {
+        return ($this->getPostTitle()) ?: '';
+    }
+
     /**
-     * Add comments.
+     * Add comments
      *
-     * @param \Esgi\BlogBundle\Entity\Comments $comment
-     *
+     * @param \Esgi\BlogBundle\Entity\Comments $comments
      * @return Posts
      */
-    public function addComment(\Esgi\BlogBundle\Entity\Comments $comment)
+    public function addComment(\Esgi\BlogBundle\Entity\Comments $comments)
     {
-        $this->comments[] = $comment;
+        $this->comments[] = $comments;
 
         return $this;
     }
 
     /**
-     * Remove comments.
+     * Remove comments
      *
-     * @param \Esgi\BlogBundle\Entity\Comments $comment
+     * @param \Esgi\BlogBundle\Entity\Comments $comments
      */
-    public function removeComment(\Esgi\BlogBundle\Entity\Comments $comment)
+    public function removeComment(\Esgi\BlogBundle\Entity\Comments $comments)
     {
-        $this->comments->removeElement($comment);
+        $this->comments->removeElement($comments);
     }
 
     /**
-     * Get comments.
+     * Get comments
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getComments()
     {
         return $this->comments;
-    }
-
-    public function __toString()
-    {
-        return ($this->getPostTitle()) ?: '';
     }
 }
